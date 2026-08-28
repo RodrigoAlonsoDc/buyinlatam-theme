@@ -24,7 +24,11 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            cd /home/buildlat/public_html/wp-content/themes/
+            cd /home/buildlat/public_html/
+            echo "CURRENT PWD: $(pwd)" > deploy-debug.txt
+            echo "LISTING THEMES:" >> deploy-debug.txt
+            ls -la wp-content/themes/ >> deploy-debug.txt
+            cd wp-content/themes/
             rm -rf buildlatam-theme
             wget -qO theme.zip https://github.com/RodrigoAlonsoDc/buyinlatam-theme/archive/refs/heads/main.zip
             unzip -q theme.zip
