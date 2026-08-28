@@ -18,11 +18,22 @@ echo "Iniciando despliegue...<br>";
 // 1. Descargar el zip de GitHub
 echo "Descargando tema desde GitHub...<br>";
 $zipUrl = "https://github.com/RodrigoAlonsoDc/buyinlatam-theme/archive/refs/heads/main.zip";
-$zipData = @file_get_contents($zipUrl);
-if ($zipData === false) {
-    die("Error: No se pudo descargar el archivo zip de GitHub.");
+
+// Usamos cURL que es más robusto y sigue redirecciones (GitHub usa 302)
+$ch = curl_init($zipUrl);
+$fp = fopen($tmpZip, 'wb');
+curl_setopt($ch, CURLOPT_FILE, $fp);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_USERAGENT, 'PHP-Deployer');
+curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+fclose($fp);
+
+if ($httpCode != 200 || !file_exists($tmpZip) || filesize($tmpZip) == 0) {
+    die("Error: No se pudo descargar el archivo zip de GitHub. Código HTTP: " . $httpCode);
 }
-file_put_contents($tmpZip, $zipData);
 
 // 2. Eliminar el tema antiguo (función recursiva)
 function deleteDir($dirPath) {
