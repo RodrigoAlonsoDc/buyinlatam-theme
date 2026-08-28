@@ -23,7 +23,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           source: "."
-          target: "/home/${{ secrets.CPANEL_USER }}/public_html/wp-content/themes/buildlatam-theme"
+          target: "public_html/wp-content/themes/buildlatam-theme"
           # Exclude git and github action files from being uploaded
           rm: true
           strip_components: 0
