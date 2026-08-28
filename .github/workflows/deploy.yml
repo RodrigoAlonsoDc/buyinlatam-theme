@@ -14,14 +14,5 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy Theme via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: public_html/wp-content/themes/buildlatam-theme/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
+      - name: Trigger Webhook Deployment
+        run: curl -s "http://buyinlatam.com/deploy.php?token=latam_deploy_2026_secreto"
