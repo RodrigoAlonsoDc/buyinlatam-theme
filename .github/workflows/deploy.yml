@@ -22,9 +22,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
+          script_stop: true
           script: |
             set -e
-            nonexistentcommand12345
             cd /home/buildlat/public_html/
             echo "CURRENT PWD: $(pwd)" > deploy-debug.txt
             echo "LISTING THEMES:" >> deploy-debug.txt
