@@ -23,7 +23,8 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd public_html/wp-content/themes/
+            set -e
+            cd /home/buildlat/public_html/wp-content/themes/
             rm -rf buildlatam-theme
             wget -qO theme.zip https://github.com/RodrigoAlonsoDc/buyinlatam-theme/archive/refs/heads/main.zip
             unzip -q theme.zip
