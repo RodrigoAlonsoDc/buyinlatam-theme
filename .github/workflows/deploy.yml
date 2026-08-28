@@ -14,25 +14,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy Theme via SSH Script
-        uses: appleboy/ssh-action@master
+      - name: Deploy Theme via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          port: ${{ secrets.SSH_PORT }}
-          debug: true
-          script: |
-            set -e
-            cd /home/buildlat/public_html/
-            echo "CURRENT PWD: $(pwd)" > deploy-debug.txt
-            echo "LISTING THEMES:" >> deploy-debug.txt
-            ls -la wp-content/themes/ >> deploy-debug.txt
-            cd wp-content/themes/
-            rm -rf buildlatam-theme
-            wget -qO theme.zip https://github.com/RodrigoAlonsoDc/buyinlatam-theme/archive/refs/heads/main.zip
-            unzip -q theme.zip
-            mv buyinlatam-theme-main buildlatam-theme
-            rm theme.zip
-            echo "Deployment completed successfully!"
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: public_html/wp-content/themes/buildlatam-theme/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
