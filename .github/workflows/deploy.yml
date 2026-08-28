@@ -24,6 +24,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
+            nonexistentcommand12345
             cd /home/buildlat/public_html/
             echo "CURRENT PWD: $(pwd)" > deploy-debug.txt
             echo "LISTING THEMES:" >> deploy-debug.txt
