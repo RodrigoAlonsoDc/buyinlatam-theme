@@ -32,7 +32,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> BuyInLatam. Todos los derechos reservados.</p>
+            <p>&copy; <?php echo date('Y'); ?> BuyInLatam. Todos los derechos reservados. Desarrollado con ❤️</p>
         </div>
     </footer>
     
