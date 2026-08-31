@@ -117,7 +117,6 @@
                     <li class="<?php echo is_shop() ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Nosotros</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">Contacto</a></li>
-                    <li><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="nav-highlight"><i class="fas fa-tag"></i> Marca Propia (OEM)</a></li>
                 </ul>
             </nav>
 
