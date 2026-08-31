@@ -66,58 +66,30 @@ get_header(); ?>
             <div class="circle-categories-grid">
                 <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
                     <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1549488344-c5a452efeb33?auto=format&fit=crop&w=300&q=80" alt="Textiles de Alpaca">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=400&q=80" alt="Prendas de alpaca">
                     </div>
-                    <span class="circle-cat-title">Alpaca Premium</span>
+                    <span class="circle-cat-title">Prendas de alpaca</span>
                 </a>
 
                 <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
                     <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=300&q=80" alt="Cacao Fino">
+                        <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=400&q=80" alt="Barras de chocolate">
                     </div>
-                    <span class="circle-cat-title">Cacao Fino</span>
+                    <span class="circle-cat-title">Barras de chocolate</span>
                 </a>
 
                 <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
                     <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=300&q=80" alt="Café de Especialidad">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=400&q=80" alt="Café envasado">
                     </div>
-                    <span class="circle-cat-title">Café de Origen</span>
+                    <span class="circle-cat-title">Café envasado</span>
                 </a>
 
                 <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
                     <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=300&q=80" alt="Granos Andinos">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=400&q=80" alt="Sacos de arroz">
                     </div>
-                    <span class="circle-cat-title">Superfoods</span>
-                </a>
-
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
-                    <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=300&q=80" alt="Snacks Nativos">
-                    </div>
-                    <span class="circle-cat-title">Snacks Nativos</span>
-                </a>
-
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
-                    <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=300&q=80" alt="Artesanías">
-                    </div>
-                    <span class="circle-cat-title">Artesanías</span>
-                </a>
-
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
-                    <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=300&q=80" alt="Especias">
-                    </div>
-                    <span class="circle-cat-title">Especias & Ajíes</span>
-                </a>
-
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
-                    <div class="circle-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=300&q=80" alt="Lotes OEM">
-                    </div>
-                    <span class="circle-cat-title">Lotes OEM</span>
+                    <span class="circle-cat-title">Sacos de arroz</span>
                 </a>
             </div>
         </div>
