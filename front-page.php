@@ -10,80 +10,10 @@ get_header(); ?>
 <div class="site-wrapper nebula-homepage">
 
     <!-- =========================================================================
-         1. HERO SECTION: CATEGORIES SIDEBAR + MAIN BANNER
+         1. HERO SECTION: FULL-WIDTH MAIN BANNER
          ========================================================================= -->
     <section class="nebula-hero-section">
-        <div class="container hero-container-grid">
-            
-            <!-- Barra Lateral de Categorías (Sidebar) -->
-            <aside class="hero-categories-sidebar">
-                <div class="sidebar-header">
-                    <i class="fas fa-layer-group"></i> Líneas de Exportación
-                </div>
-                <ul class="sidebar-categories-list">
-                    <li>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-tshirt"></i></span>
-                            <span class="cat-name">Textiles & Prendas de Alpaca</span>
-                            <i class="fas fa-chevron-right arrow-icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-cookie"></i></span>
-                            <span class="cat-name">Cacao Fino & Chocolatería</span>
-                            <i class="fas fa-chevron-right arrow-icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-mug-hot"></i></span>
-                            <span class="cat-name">Café de Especialidad & Origen</span>
-                            <i class="fas fa-chevron-right arrow-icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-seedling"></i></span>
-                            <span class="cat-name">Granos Andinos & Superfoods</span>
-                            <i class="fas fa-chevron-right arrow-icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-apple-alt"></i></span>
-                            <span class="cat-name">Snacks Nativos Seleccionados</span>
-                            <i class="fas fa-chevron-right arrow-icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-paint-brush"></i></span>
-                            <span class="cat-name">Artesanía & Decoración Tradicional</span>
-                            <i class="fas fa-chevron-right arrow-icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-pepper-hot"></i></span>
-                            <span class="cat-name">Especias, Ajíes & Aceites</span>
-                            <i class="fas fa-chevron-right arrow-icon"></i>
-                        </a>
-                    </li>
-                    <li class="special-sidebar-item">
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-percentage"></i></span>
-                            <span class="cat-name">Lotes al por Mayor</span>
-                        </a>
-                    </li>
-                    <li class="special-sidebar-item">
-                        <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">
-                            <span class="cat-icon"><i class="fas fa-file-pdf"></i></span>
-                            <span class="cat-name">Catálogo OEM & Fichas</span>
-                        </a>
-                    </li>
-                </ul>
-            </aside>
+        <div class="container hero-full-container">
 
             <!-- Banner Principal Hero -->
             <div class="hero-main-banner-card">

@@ -109,15 +109,6 @@
     <!-- Fila de Navegación & Soporte -->
     <div class="header-nav-row">
         <div class="container header-nav-container">
-            
-            <!-- Botón Desplegable de Categorías -->
-            <div class="categories-dropdown-btn-wrap">
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn-all-categories">
-                    <i class="fas fa-bars"></i>
-                    <span>Categorías de Exportación</span>
-                    <i class="fas fa-chevron-down chevron-icon"></i>
-                </a>
-            </div>
 
             <!-- Menú Principal -->
             <nav class="main-nav-nebula">
