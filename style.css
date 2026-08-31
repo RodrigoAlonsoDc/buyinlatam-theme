@@ -380,7 +380,7 @@ a:hover {
 }
 
 .hero-text-content {
-    max-width: 540px;
+    max-width: 470px;
     padding: 50px 0;
     position: relative;
     z-index: 5;
@@ -391,7 +391,7 @@ a:hover {
     right: 0;
     top: 0;
     bottom: 0;
-    width: 48%;
+    width: 58%;
     height: 100%;
     overflow: hidden;
     display: flex;
@@ -406,20 +406,20 @@ a:hover {
     object-fit: cover;
     object-position: center top;
     display: block;
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 18%, black 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 18%, black 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 12%, black 28%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 12%, black 28%);
     border-radius: 0 20px 20px 0;
 }
 
 .hero-arch-outline {
     position: absolute;
-    right: 35px;
-    top: 40px;
+    right: 45px;
+    top: 35px;
     bottom: 0;
-    width: 320px;
+    width: 340px;
     border: 1.5px solid rgba(255, 199, 0, 0.5);
     border-bottom: none;
-    border-radius: 160px 160px 0 0;
+    border-radius: 170px 170px 0 0;
     z-index: 1;
     pointer-events: none;
 }
