@@ -6,13 +6,13 @@
         <!-- Hero Slider (Full width) -->
         <section class="hero-slider">
             <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1920&q=80" alt="Exportación de Perú" class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1920&q=80" alt="Exportación de América Latina" class="hero-bg">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
-                    <h4 class="hero-subtitle">EXPORTACIÓN B2B PREMIUM</h4>
-                    <h1 class="hero-title">Lo Mejor del Perú<br>Para el Mundo</h1>
-                    <p class="hero-desc">Boutique exclusiva de prendas de alpaca, chocolates finos, café de origen y arroz seleccionado.</p>
-                    <a href="https://wa.me/51997309032?text=Hola,%20quiero%20cotizar%20sus%20productos%20peruanos" target="_blank" class="btn-primary btn-large">
+                    <h4 class="hero-subtitle"><i class="fas fa-globe-americas"></i> EXPORTACIÓN B2B DIRECTA</h4>
+                    <h1 class="hero-title">PRODUCTOS DE <span class="highlight-yellow">LATINOAMÉRICA</span><br>PARA EL MUNDO</h1>
+                    <p class="hero-desc">Prendas de alpaca, cacao fino, café de origen y snacks seleccionados al por mayor. <strong>¡Incluimos tu propia marca!</strong></p>
+                    <a href="https://wa.me/51997309032?text=Hola,%20quiero%20cotizar%20productos%20de%20exportaci%C3%B3n" target="_blank" class="btn-primary btn-large">
                         Cotizar por mayor <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -23,24 +23,24 @@
         <section class="features-section">
             <div class="container">
                 <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
                     <div class="feature-text">
-                        <h3>Origen Certificado</h3>
-                        <p>Productos 100% peruanos de la más alta calidad.</p>
+                        <h3>Incluimos Tu Marca</h3>
+                        <p>Personalizamos prendas y productos con el logo de tu empresa.</p>
                     </div>
                 </div>
                 <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-ship"></i></div>
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="feature-text">
+                        <h3>Calidad Superior 100%</h3>
+                        <p>Alpaca, cacao y café peruanos de la más alta exigencia.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-plane-departure"></i></div>
                     <div class="feature-text">
                         <h3>Exportación Directa</h3>
-                        <p>Llegamos a cualquier puerto o aeropuerto del mundo.</p>
-                    </div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
-                    <div class="feature-text">
-                        <h3>Atención Personalizada</h3>
-                        <p>Cotizaciones y seguimiento directo 24/7.</p>
+                        <p>Entregas B2B a cualquier puerto o aeropuerto del mundo.</p>
                     </div>
                 </div>
             </div>

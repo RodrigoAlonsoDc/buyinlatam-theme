@@ -43,7 +43,8 @@
             <ul>
                 <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
                 <li><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo</a></li>
-                <li><a href="#">Nosotros</a></li>
+                <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Nosotros</a></li>
+                <li><a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">Contacto</a></li>
             </ul>
         </nav>
     </div>
