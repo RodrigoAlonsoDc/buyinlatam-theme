@@ -15,13 +15,14 @@ get_header(); ?>
     <section class="nebula-hero-section">
         <div class="container hero-full-container">
 
-            <!-- Banner Principal Hero -->
+            <!-- Banner Principal Hero con Banner1.png -->
             <div class="hero-main-banner-card">
+                <div class="hero-banner-bg-wrap">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Banner1.png" alt="Exportación BuyInLatam - Productos Peruanos y de Latinoamérica" class="hero-banner-main-img">
+                    <div class="hero-banner-gradient-overlay"></div>
+                </div>
+
                 <div class="hero-banner-inner">
-                    <!-- Fondo decorativo con arco -->
-                    <div class="hero-arch-bg"></div>
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80" alt="Exportación BuyInLatam" class="hero-model-img">
-                    
                     <div class="hero-text-content">
                         <span class="hero-tag-pill">NUEVA COLECCIÓN B2B · ORIGEN PERÚ</span>
                         <h1 class="hero-main-title">
