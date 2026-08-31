@@ -40,8 +40,8 @@
                 <?php if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) : ?>
                     <?php the_custom_logo(); ?>
                 <?php else : ?>
-                    <div class="logo-brand-box">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo2.png" alt="BuyInLatam Logo" class="brand-logo-img" onerror="this.src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png';">
+                    <div class="logo-brand-box" style="display:flex; align-items:center; max-height:65px;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo2.png" alt="BuyInLatam Logo" class="brand-logo-img" style="max-height:65px; height:65px; width:auto; max-width:220px; object-fit:contain; display:block;" onerror="this.src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png';">
                         <div id="text-logo-fallback" class="text-logo" style="display:none;">
                             <i class="fas fa-globe-americas logo-icon"></i>
                             <div class="text-logo-content">
