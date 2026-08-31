@@ -103,14 +103,66 @@ a:hover {
     padding: 16px 20px;
 }
 
-.header-logo img {
-    height: 65px;
-    width: auto;
-    transition: transform 0.3s ease;
+.header-logo {
+    display: flex;
+    align-items: center;
 }
 
-.header-logo img:hover {
-    transform: scale(1.02);
+.logo-brand-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo-img {
+    height: 60px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #000000;
+    padding: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.brand-logo-img:hover {
+    transform: scale(1.03);
+}
+
+.text-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 32px;
+    color: var(--primary-blue);
+}
+
+.text-logo-content {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo-main {
+    font-family: var(--font-title);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.logo-sub {
+    font-family: var(--font-title);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-yellow);
+    letter-spacing: 2px;
 }
 
 .header-icons {
@@ -1584,4 +1636,259 @@ a:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   PALETTE SWITCHER (TUERCA & MODAL)
+   ========================================================================== */
+.floating-palette-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #0A1931 0%, #0052CC 100%);
+    color: white;
+    border: 2px solid var(--accent-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 82, 204, 0.4);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-palette-btn:hover {
+    transform: scale(1.1) rotate(45deg);
+    box-shadow: 0 12px 30px rgba(0, 82, 204, 0.6);
+}
+
+.floating-palette-btn .palette-tooltip {
+    position: absolute;
+    left: 70px;
+    background: #0F172A;
+    color: white;
+    font-family: var(--font-primary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-10px);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.floating-palette-btn:hover .palette-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Modal Backdrop */
+.palette-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.palette-modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.palette-modal-card {
+    background: white;
+    width: 90%;
+    max-width: 580px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.palette-modal-backdrop.active .palette-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.palette-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+}
+
+.palette-modal-title {
+    font-family: var(--font-title);
+    font-size: 20px;
+    color: #0F172A;
+    margin: 0 0 4px 0;
+}
+
+.palette-modal-title i {
+    color: var(--primary-blue);
+    margin-right: 6px;
+}
+
+.palette-modal-subtitle {
+    font-size: 13px;
+    color: #64748B;
+    margin: 0;
+}
+
+.palette-close-btn {
+    background: #F1F5F9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 1;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.palette-close-btn:hover {
+    background: #E2E8F0;
+    color: #0F172A;
+}
+
+.palette-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.palette-card {
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    position: relative;
+    background: #F8FAFC;
+    transition: all 0.2s ease;
+}
+
+.palette-card:hover {
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.palette-card.active {
+    border-color: #0066FF;
+    background: #EFF6FF;
+    box-shadow: 0 4px 14px rgba(0, 102, 255, 0.15);
+}
+
+.palette-badge-check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background: #0066FF;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.palette-card.active .palette-badge-check {
+    display: flex;
+}
+
+.palette-colors-preview {
+    display: flex;
+    height: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.palette-colors-preview span {
+    flex: 1;
+    height: 100%;
+}
+
+.palette-info strong {
+    display: block;
+    font-size: 13px;
+    color: #0F172A;
+    margin-bottom: 2px;
+}
+
+.palette-info span {
+    font-size: 11px;
+    color: #64748B;
+    line-height: 1.3;
+    display: block;
+}
+
+.palette-modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-reset-palette {
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    color: #475569;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-reset-palette:hover {
+    background: #E2E8F0;
+    color: #0F172A;
+}
+
+@media (max-width: 600px) {
+    .palette-options-grid {
+        grid-template-columns: 1fr;
+    }
+    .floating-palette-btn {
+        left: 20px;
+        bottom: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+}
+
 
