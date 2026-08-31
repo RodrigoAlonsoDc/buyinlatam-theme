@@ -1,143 +1,459 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Plantilla de Página de Inicio (Front Page)
+ * Diseño Moderno E-Commerce B2B (Estilo NEBULA)
+ * Tema BuyInLatam
+ */
 
-<div class="site-wrapper">
-    <main class="main-content">
-        
-        <!-- Hero Slider (Full width) -->
-        <section class="hero-slider">
-            <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1920&q=80" alt="Exportación de América Latina" class="hero-bg">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h4 class="hero-subtitle"><i class="fas fa-globe-americas"></i> EXPORTACIÓN B2B DIRECTA</h4>
-                    <h1 class="hero-title">PRODUCTOS DE <span class="highlight-yellow">LATINOAMÉRICA</span><br>PARA EL MUNDO</h1>
-                    <p class="hero-desc">Prendas de alpaca, cacao fino, café de origen y snacks seleccionados al por mayor. <strong>¡Incluimos tu propia marca!</strong></p>
-                    <a href="https://wa.me/51997309032?text=Hola,%20quiero%20cotizar%20productos%20de%20exportaci%C3%B3n" target="_blank" class="btn-primary btn-large">
-                        Cotizar por mayor <i class="fab fa-whatsapp"></i>
-                    </a>
+get_header(); ?>
+
+<div class="site-wrapper nebula-homepage">
+
+    <!-- =========================================================================
+         1. HERO SECTION: CATEGORIES SIDEBAR + MAIN BANNER
+         ========================================================================= -->
+    <section class="nebula-hero-section">
+        <div class="container hero-container-grid">
+            
+            <!-- Barra Lateral de Categorías (Sidebar) -->
+            <aside class="hero-categories-sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-layer-group"></i> Líneas de Exportación
                 </div>
-            </div>
-        </section>
+                <ul class="sidebar-categories-list">
+                    <li>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-tshirt"></i></span>
+                            <span class="cat-name">Textiles & Prendas de Alpaca</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-cookie"></i></span>
+                            <span class="cat-name">Cacao Fino & Chocolatería</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-mug-hot"></i></span>
+                            <span class="cat-name">Café de Especialidad & Origen</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-seedling"></i></span>
+                            <span class="cat-name">Granos Andinos & Superfoods</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-apple-alt"></i></span>
+                            <span class="cat-name">Snacks Nativos Seleccionados</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-paint-brush"></i></span>
+                            <span class="cat-name">Artesanía & Decoración Tradicional</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-pepper-hot"></i></span>
+                            <span class="cat-name">Especias, Ajíes & Aceites</span>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </a>
+                    </li>
+                    <li class="special-sidebar-item">
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-percentage"></i></span>
+                            <span class="cat-name">Lotes al por Mayor</span>
+                        </a>
+                    </li>
+                    <li class="special-sidebar-item">
+                        <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">
+                            <span class="cat-icon"><i class="fas fa-file-pdf"></i></span>
+                            <span class="cat-name">Catálogo OEM & Fichas</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
 
-        <!-- Icon Boxes / Features -->
-        <section class="features-section">
-            <div class="container">
-                <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
-                    <div class="feature-text">
-                        <h3>Incluimos Tu Marca</h3>
-                        <p>Personalizamos prendas y productos con el logo de tu empresa.</p>
+            <!-- Banner Principal Hero -->
+            <div class="hero-main-banner-card">
+                <div class="hero-banner-inner">
+                    <!-- Fondo decorativo con arco -->
+                    <div class="hero-arch-bg"></div>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80" alt="Exportación BuyInLatam" class="hero-model-img">
+                    
+                    <div class="hero-text-content">
+                        <span class="hero-tag-pill">NUEVA COLECCIÓN B2B · ORIGEN PERÚ</span>
+                        <h1 class="hero-main-title">
+                            Productos de <span class="highlight-yellow">Latinoamérica</span><br>Para el Mundo
+                        </h1>
+                        <p class="hero-main-desc">
+                            Prendas de baby alpaca, cacao fino de aroma, café de especialidad y superfoods al por mayor. <strong>¡Incluimos tu propia marca (OEM)!</strong>
+                        </p>
+                        <div class="hero-btn-group">
+                            <a href="https://wa.me/51997309032?text=Hola,%20deseo%20cotizar%20productos%20de%20exportaci%C3%B3n" target="_blank" class="btn-hero-cta">
+                                Cotizar al Por Mayor <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn-hero-secondary">
+                                Ver Catálogo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Indicadores de Slider -->
+                    <div class="hero-slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
-                <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
-                    <div class="feature-text">
-                        <h3>Calidad Superior 100%</h3>
-                        <p>Alpaca, cacao y café peruanos de la más alta exigencia.</p>
-                    </div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon"><i class="fas fa-plane-departure"></i></div>
-                    <div class="feature-text">
-                        <h3>Exportación Directa</h3>
-                        <p>Entregas B2B a cualquier puerto o aeropuerto del mundo.</p>
-                    </div>
-                </div>
             </div>
-        </section>
 
-        <!-- Categories Grid -->
-        <section class="categories-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Nuestras Líneas</h2>
-                    <div class="title-divider"></div>
-                </div>
-                
-                <div class="categories-grid">
-                    <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="category-box">
-                        <img src="https://images.unsplash.com/photo-1549488344-c5a452efeb33?auto=format&fit=crop&w=500&q=80" alt="Textiles de Alpaca">
-                        <div class="category-overlay">
-                            <h3>Textiles de Alpaca</h3>
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="category-box">
-                        <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=500&q=80" alt="Cacao Fino">
-                        <div class="category-overlay">
-                            <h3>Cacao Fino</h3>
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="category-box">
-                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=500&q=80" alt="Café de Origen">
-                        <div class="category-overlay">
-                            <h3>Café de Origen</h3>
-                        </div>
-                    </a>
-                    <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="category-box">
-                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=500&q=80" alt="Granos Seleccionados">
-                        <div class="category-overlay">
-                            <h3>Granos Selectos</h3>
-                        </div>
-                    </a>
-                </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         2. BROWSE BY CATEGORIES (CIRCULAR CARDS ROW)
+         ========================================================================= -->
+    <section class="nebula-categories-section">
+        <div class="container">
+            <div class="section-title-center">
+                <h2>Explora por Categorías</h2>
+                <p>Colecciones seleccionadas con los más altos estándares de exportación internacional.</p>
             </div>
-        </section>
 
-        <!-- Dynamic WooCommerce Products -->
-        <section class="products-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Catálogo Completo</h2>
-                    <div class="title-divider"></div>
+            <div class="circle-categories-grid">
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1549488344-c5a452efeb33?auto=format&fit=crop&w=300&q=80" alt="Textiles de Alpaca">
+                    </div>
+                    <span class="circle-cat-title">Alpaca Premium</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=300&q=80" alt="Cacao Fino">
+                    </div>
+                    <span class="circle-cat-title">Cacao Fino</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=300&q=80" alt="Café de Especialidad">
+                    </div>
+                    <span class="circle-cat-title">Café de Origen</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=300&q=80" alt="Granos Andinos">
+                    </div>
+                    <span class="circle-cat-title">Superfoods</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=300&q=80" alt="Snacks Nativos">
+                    </div>
+                    <span class="circle-cat-title">Snacks Nativos</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=300&q=80" alt="Artesanías">
+                    </div>
+                    <span class="circle-cat-title">Artesanías</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=300&q=80" alt="Especias">
+                    </div>
+                    <span class="circle-cat-title">Especias & Ajíes</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="circle-cat-card">
+                    <div class="circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=300&q=80" alt="Lotes OEM">
+                    </div>
+                    <span class="circle-cat-title">Lotes OEM</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         3. TRENDING RIGHT NOW (MÁS COTIZADOS)
+         ========================================================================= -->
+    <section class="nebula-trending-section">
+        <div class="container">
+            <div class="section-title-row">
+                <div class="title-with-badge">
+                    <h2>Productos Más Cotizados <span class="badge-fire">🔥</span></h2>
+                    <p>Las líneas con mayor demanda internacional de importadores este mes.</p>
                 </div>
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="view-all-link">
+                    Ver Catálogo Completo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
-                <div class="product-grid">
-                    <?php
-                    $args = array(
-                        'post_type'      => 'product',
-                        'posts_per_page' => 8,
-                        'orderby'        => 'date',
-                        'order'          => 'DESC',
-                    );
-                    $loop = new WP_Query( $args );
+            <div class="trending-products-grid">
+                <?php
+                $args = array(
+                    'post_type'      => 'product',
+                    'posts_per_page' => 6,
+                    'orderby'        => 'date',
+                    'order'          => 'DESC'
+                );
+                $query = new WP_Query( $args );
 
-                    if ( $loop->have_posts() ) {
-                        while ( $loop->have_posts() ) : $loop->the_post();
-                            global $product;
-                            ?>
-                            <div class="product-card">
-                                <div class="product-image-wrapper">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <?php if ( has_post_thumbnail() ) {
-                                            the_post_thumbnail( 'woocommerce_thumbnail', array( 'class' => 'product-image' ) );
-                                        } else { ?>
-                                            <img src="<?php echo wc_placeholder_img_src(); ?>" alt="Placeholder" class="product-image">
-                                        <?php } ?>
-                                    </a>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                    <p class="product-price">Cotizar al por mayor</p>
-                                    <div class="product-actions">
-                                        <a href="https://wa.me/51997309032?text=<?php echo urlencode('Hola, quiero cotizar ' . get_the_title()); ?>" target="_blank" class="btn-add-cart">
-                                            <i class="fab fa-whatsapp"></i> Cotizar
-                                        </a>
-                                        <a href="<?php the_permalink(); ?>" class="btn-view">Detalles</a>
+                if ( $query->have_posts() ) :
+                    while ( $query->have_posts() ) : $query->the_post(); global $product;
+                    ?>
+                        <div class="nebula-product-card">
+                            <div class="product-thumb-box">
+                                <span class="product-origin-tag">Perú</span>
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php if ( has_post_thumbnail() ) {
+                                        the_post_thumbnail( 'woocommerce_thumbnail', array( 'class' => 'product-img-clean' ) );
+                                    } else { ?>
+                                        <img src="<?php echo wc_placeholder_img_src(); ?>" alt="Producto" class="product-img-clean">
+                                    <?php } ?>
+                                </a>
+                            </div>
+                            <div class="product-details-clean">
+                                <h3 class="clean-product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                <div class="product-moq-rate">
+                                    <span class="price-b2b">Cotizar al por mayor</span>
+                                    <div class="stars-rate">
+                                        <i class="fas fa-star"></i> 5.0
                                     </div>
                                 </div>
+                                <div class="card-action-bar">
+                                    <a href="https://wa.me/51997309032?text=<?php echo urlencode('Hola, quiero cotizar al por mayor: ' . get_the_title()); ?>" target="_blank" class="btn-quote-cart" title="Cotizar por WhatsApp">
+                                        <i class="fab fa-whatsapp"></i> Cotizar
+                                    </a>
+                                    <a href="<?php the_permalink(); ?>" class="btn-details-minimal" title="Ficha Técnica">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <?php
-                        endwhile;
-                    } else {
-                        echo '<p>No hay productos disponibles por ahora.</p>';
-                    }
-                    wp_reset_postdata();
-                    ?>
+                        </div>
+                    <?php endwhile; wp_reset_postdata(); ?>
+                <?php else : ?>
+                    <!-- Tarjetas de Ejemplo si la base de datos está vacía -->
+                    <div class="nebula-product-card">
+                        <div class="product-thumb-box">
+                            <span class="product-origin-tag">Perú</span>
+                            <img src="https://images.unsplash.com/photo-1549488344-c5a452efeb33?auto=format&fit=crop&w=400&q=80" alt="Chompas de Baby Alpaca" class="product-img-clean">
+                        </div>
+                        <div class="product-details-clean">
+                            <h3 class="clean-product-title"><a href="#">Chompas de Baby Alpaca Fina</a></h3>
+                            <div class="product-moq-rate">
+                                <span class="price-b2b">MOQ: 50 unidades</span>
+                                <div class="stars-rate"><i class="fas fa-star"></i> 5.0</div>
+                            </div>
+                            <div class="card-action-bar">
+                                <a href="https://wa.me/51997309032?text=Hola,%20deseo%20cotizar%20Chompas%20de%20Baby%20Alpaca" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Cotizar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nebula-product-card">
+                        <div class="product-thumb-box">
+                            <span class="product-origin-tag">Perú</span>
+                            <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=400&q=80" alt="Cacao Criollo Fino" class="product-img-clean">
+                        </div>
+                        <div class="product-details-clean">
+                            <h3 class="clean-product-title"><a href="#">Cacao Criollo en Grano Orgánico</a></h3>
+                            <div class="product-moq-rate">
+                                <span class="price-b2b">MOQ: 500 kg</span>
+                                <div class="stars-rate"><i class="fas fa-star"></i> 4.9</div>
+                            </div>
+                            <div class="card-action-bar">
+                                <a href="https://wa.me/51997309032?text=Hola,%20deseo%20cotizar%20Cacao%20Criollo" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Cotizar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nebula-product-card">
+                        <div class="product-thumb-box">
+                            <span class="product-origin-tag">Perú</span>
+                            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=400&q=80" alt="Café de Especialidad" class="product-img-clean">
+                        </div>
+                        <div class="product-details-clean">
+                            <h3 class="clean-product-title"><a href="#">Café de Especialidad Cusco 86+</a></h3>
+                            <div class="product-moq-rate">
+                                <span class="price-b2b">MOQ: 10 Sacos</span>
+                                <div class="stars-rate"><i class="fas fa-star"></i> 5.0</div>
+                            </div>
+                            <div class="card-action-bar">
+                                <a href="https://wa.me/51997309032?text=Hola,%20deseo%20cotizar%20Cafe%20de%20Especialidad" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Cotizar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nebula-product-card">
+                        <div class="product-thumb-box">
+                            <span class="product-origin-tag">Perú</span>
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=400&q=80" alt="Quinua Real Blanca" class="product-img-clean">
+                        </div>
+                        <div class="product-details-clean">
+                            <h3 class="clean-product-title"><a href="#">Quinua Real Orgánica Certificada</a></h3>
+                            <div class="product-moq-rate">
+                                <span class="price-b2b">MOQ: 1 Tonelada</span>
+                                <div class="stars-rate"><i class="fas fa-star"></i> 4.8</div>
+                            </div>
+                            <div class="card-action-bar">
+                                <a href="https://wa.me/51997309032?text=Hola,%20deseo%20cotizar%20Quinua%20Real" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Cotizar</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         4. DUAL PROMO BANNERS
+         ========================================================================= -->
+    <section class="nebula-promo-banners-section">
+        <div class="container promo-grid">
+            
+            <div class="promo-banner-card promo-card-1">
+                <div class="promo-content">
+                    <span class="promo-tag">DESCUENTOS POR CONTENEDOR</span>
+                    <h2>Hasta 20% Off en Lotes al por Mayor</h2>
+                    <p>Optimiza tus costos de flete marítimo y aéreo consolidando pedidos de exportación.</p>
+                    <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn-promo">
+                        Ver Lotes Disponibles
+                    </a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80" alt="Descuentos Exportación" class="promo-img">
+            </div>
+
+            <div class="promo-banner-card promo-card-2">
+                <div class="promo-content">
+                    <span class="promo-tag">NUEVA COSECHA & DISEÑO</span>
+                    <h2>Colección 2026: Marca Propia OEM</h2>
+                    <p>Preparamos tus productos con tus propias etiquetas, bordados y empaques de lujo.</p>
+                    <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" class="btn-promo btn-promo-light">
+                        Solicitar Muestras
+                    </a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Marca Propia OEM" class="promo-img">
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         5. FEATURED COLLECTIONS (4-BENTO GRID)
+         ========================================================================= -->
+    <section class="nebula-collections-section">
+        <div class="container">
+            <div class="section-title-row">
+                <div class="title-with-badge">
+                    <h2>Colecciones Destacadas</h2>
+                    <p>Líneas de producción seleccionadas para marcas y distribuidores globales.</p>
+                </div>
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="view-all-link">
+                    Ver Todas las Líneas <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="collections-bento-grid">
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="bento-collection-card">
+                    <div class="bento-info">
+                        <h3>Prendas de Alpaca</h3>
+                        <p>Hilados y tejidos finos</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&w=400&q=80" alt="Alpaca" class="bento-img">
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="bento-collection-card">
+                    <div class="bento-info">
+                        <h3>Cacao & Derivados</h3>
+                        <p>Nibs, manteca y licor</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=400&q=80" alt="Cacao" class="bento-img">
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="bento-collection-card">
+                    <div class="bento-info">
+                        <h3>Café Gourmet</h3>
+                        <p>Micro-lotes de altura</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=400&q=80" alt="Café" class="bento-img">
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="bento-collection-card">
+                    <div class="bento-info">
+                        <h3>Granos Andinos</h3>
+                        <p>Quinua, maca y chía</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=400&q=80" alt="Superfoods" class="bento-img">
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         6. VALUE PROPOSITION BAR (4 TRUST BADGES)
+         ========================================================================= -->
+    <section class="nebula-trust-bar-section">
+        <div class="container">
+            <div class="trust-bar-grid">
+                <div class="trust-item">
+                    <i class="fas fa-plane-departure trust-icon"></i>
+                    <div class="trust-content">
+                        <strong>Envíos Globales</strong>
+                        <span>Vía Aérea Express & Marítima</span>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <i class="fas fa-tags trust-icon"></i>
+                    <div class="trust-content">
+                        <strong>Marca Propia (OEM)</strong>
+                        <span>Tus etiquetas y empaques</span>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt trust-icon"></i>
+                    <div class="trust-content">
+                        <strong>Control de Calidad 100%</strong>
+                        <span>Certificados de exportación</span>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <i class="fas fa-headset trust-icon"></i>
+                    <div class="trust-content">
+                        <strong>Soporte Comercial 24/7</strong>
+                        <span>Asesoría aduanera directa</span>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
 </div>
 
 <?php get_footer(); ?>

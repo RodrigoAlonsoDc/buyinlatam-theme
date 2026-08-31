@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Script de Carga Temprana de Paleta Guardada -->
     <script>
@@ -27,54 +27,119 @@
 </head>
 <body <?php body_class(); ?>>
 
+<!-- Barra Superior Promocional -->
 <div class="top-bar">
     <div class="top-bar-content">
-        <span><i class="fas fa-globe-americas"></i> Exportación premium desde Perú — Envíos a todo el mundo</span>
+        <span><i class="fas fa-globe-americas"></i> EXPORTACIÓN PREMIUM DESDE PERÚ — ENVÍOS DIRECTOS A TODO EL MUNDO</span>
     </div>
 </div>
 
-<header class="site-header">
-    <div class="header-main">
-        <div class="header-logo">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo-link">
-                <?php if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) : ?>
-                    <?php the_custom_logo(); ?>
-                <?php else : ?>
-                    <div class="logo-brand-box" style="display:flex; align-items:center; max-height:65px;">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo2.png" alt="BuyInLatam Logo" class="brand-logo-img" style="max-height:65px; height:65px; width:auto; max-width:220px; object-fit:contain; display:block;" onerror="this.src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png';">
-                        <div id="text-logo-fallback" class="text-logo" style="display:none;">
-                            <i class="fas fa-globe-americas logo-icon"></i>
-                            <div class="text-logo-content">
-                                <span class="logo-main">BUY IN</span>
-                                <span class="logo-sub">LATAM</span>
+<!-- Encabezado Principal Estilo E-Commerce B2B -->
+<header class="site-header nebula-header">
+    
+    <!-- Fila Central: Logo + Buscador + Utilidades -->
+    <div class="header-main-row">
+        <div class="container header-main-container">
+            
+            <!-- Logo BuyInLatam -->
+            <div class="header-logo">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo-link">
+                    <?php if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) : ?>
+                        <?php the_custom_logo(); ?>
+                    <?php else : ?>
+                        <div class="logo-brand-box">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo2.png" alt="BuyInLatam Logo" class="brand-logo-img" onerror="this.src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png';">
+                            <div id="text-logo-fallback" class="text-logo" style="display:none;">
+                                <i class="fas fa-globe-americas logo-icon"></i>
+                                <div class="text-logo-content">
+                                    <span class="logo-main">BUY IN</span>
+                                    <span class="logo-sub">LATAM</span>
+                                </div>
                             </div>
                         </div>
+                    <?php endif; ?>
+                </a>
+            </div>
+
+            <!-- Buscador Central Integrado -->
+            <div class="header-search-box">
+                <form role="search" method="get" class="search-form-nebula" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search search-input-icon"></i>
+                        <input type="search" class="search-field" placeholder="Buscar productos de exportación, alpaca, café, cacao..." value="<?php echo get_search_query(); ?>" name="s" />
+                        <input type="hidden" name="post_type" value="product" />
                     </div>
-                <?php endif; ?>
-            </a>
-        </div>
-        
-        <div class="header-icons">
-            <a href="https://wa.me/51997309032?text=Hola,%20quiero%20cotizar" target="_blank" class="header-icon" title="Cotizar por WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="#" class="header-icon" title="Mi Cuenta">
-                <i class="far fa-user"></i>
-            </a>
-            <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-icon cart-icon" title="Carrito">
-                <i class="fas fa-shopping-bag"></i>
-            </a>
+                    <button type="submit" class="search-submit-btn" aria-label="Buscar">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Utilidades / Accesos Directos B2B -->
+            <div class="header-user-actions">
+                <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" class="action-item" title="Solicitar Cotización">
+                    <div class="action-icon-wrap">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <span class="action-label">Cotizar</span>
+                </a>
+
+                <a href="https://wa.me/51997309032?text=Hola,%20deseo%20asesoría%20para%20exportación" target="_blank" class="action-item whatsapp-action" title="Asesoría WhatsApp">
+                    <div class="action-icon-wrap">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <span class="action-label">WhatsApp</span>
+                </a>
+
+                <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="action-item cart-action" title="Ver Solicitud de Pedido">
+                    <div class="action-icon-wrap">
+                        <i class="fas fa-shopping-bag"></i>
+                        <?php 
+                        $cart_count = ( function_exists('WC') && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0;
+                        ?>
+                        <span class="cart-badge-count"><?php echo esc_html( $cart_count ); ?></span>
+                    </div>
+                    <span class="action-label">Pedido</span>
+                </a>
+            </div>
+
         </div>
     </div>
-    
-    <div class="header-nav-wrapper">
-        <nav class="main-nav">
-            <ul>
-                <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
-                <li><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo</a></li>
-                <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Nosotros</a></li>
-                <li><a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">Contacto</a></li>
-            </ul>
-        </nav>
+
+    <!-- Fila de Navegación & Soporte -->
+    <div class="header-nav-row">
+        <div class="container header-nav-container">
+            
+            <!-- Botón Desplegable de Categorías -->
+            <div class="categories-dropdown-btn-wrap">
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn-all-categories">
+                    <i class="fas fa-bars"></i>
+                    <span>Categorías de Exportación</span>
+                    <i class="fas fa-chevron-down chevron-icon"></i>
+                </a>
+            </div>
+
+            <!-- Menú Principal -->
+            <nav class="main-nav-nebula">
+                <ul>
+                    <li class="<?php echo is_front_page() ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
+                    <li class="<?php echo is_shop() ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Nosotros</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">Contacto</a></li>
+                    <li><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="nav-highlight"><i class="fas fa-tag"></i> Marca Propia (OEM)</a></li>
+                </ul>
+            </nav>
+
+            <!-- Teléfono / Soporte B2B -->
+            <div class="header-support-info">
+                <i class="fas fa-headset"></i>
+                <div class="support-text">
+                    <span class="support-label">Soporte B2B:</span>
+                    <a href="tel:+51997309032" class="support-phone">+51 997 309 032</a>
+                </div>
+            </div>
+
+        </div>
     </div>
+
 </header>
