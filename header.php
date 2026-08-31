@@ -41,7 +41,7 @@
                     <?php the_custom_logo(); ?>
                 <?php else : ?>
                     <div class="logo-brand-box">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="BuyInLatam Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-logo-fallback').style.display='flex';">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo2.png" alt="BuyInLatam Logo" class="brand-logo-img" onerror="this.src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png';">
                         <div id="text-logo-fallback" class="text-logo" style="display:none;">
                             <i class="fas fa-globe-americas logo-icon"></i>
                             <div class="text-logo-content">

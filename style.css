@@ -115,20 +115,16 @@ a:hover {
 }
 
 .brand-logo-img {
-    height: 60px;
+    height: 65px;
     width: auto;
-    max-width: 220px;
+    max-width: 240px;
     object-fit: contain;
-    border-radius: 8px;
-    background: #000000;
-    padding: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
     display: block;
 }
 
 .brand-logo-img:hover {
-    transform: scale(1.03);
+    transform: scale(1.04);
 }
 
 .text-logo {
