@@ -327,47 +327,7 @@ get_header(); ?>
                     </div>
                 </div>
 
-                <!-- Sección de Formulario de Cotización Rápida B2B -->
-                <div id="b2b-inquiry-section" class="b2b-inquiry-section">
-                    <div class="inquiry-header">
-                        <span class="inquiry-subtitle">Atención Directa al Importador</span>
-                        <h2>¿Deseas una Cotización Formal para <?php the_title(); ?>?</h2>
-                        <p>Envíanos los detalles de tu solicitud y nuestro equipo de comercio exterior te responderá con una propuesta comercial y ficha técnica detallada.</p>
-                    </div>
 
-                    <div class="inquiry-form-container">
-                        <form action="<?php echo esc_url( home_url( '/contacto' ) ); ?>" method="GET" class="b2b-quick-form">
-                            <input type="hidden" name="producto" value="<?php echo esc_attr( get_the_title() ); ?>">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label><i class="fas fa-user"></i> Tu Nombre / Empresa</label>
-                                    <input type="text" name="nombre" placeholder="Ej: John Doe / Latin Imports LLC" required>
-                                </div>
-                                <div class="form-group">
-                                    <label><i class="fas fa-envelope"></i> Correo Corporativo</label>
-                                    <input type="email" name="email" placeholder="compras@tuempresa.com" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label><i class="fas fa-globe"></i> País de Destino</label>
-                                    <input type="text" name="pais" placeholder="Ej: Estados Unidos, España, México..." required>
-                                </div>
-                                <div class="form-group">
-                                    <label><i class="fas fa-cubes"></i> Cantidad Estimada (Unidades / Kg)</label>
-                                    <input type="text" name="cantidad" placeholder="Ej: 100 unidades" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fas fa-comment-alt"></i> Comentarios adicionales o requerimientos especiales</label>
-                                <textarea name="mensaje" rows="3" placeholder="Indícanos si requieres tu propia marca (OEM), empaque personalizado o especificaciones particulares..."></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit-inquiry">
-                                <i class="fas fa-paper-plane"></i> Enviar Solicitud de Cotización
-                            </button>
-                        </form>
-                    </div>
-                </div>
 
                 <!-- Productos Relacionados B2B -->
                 <?php
