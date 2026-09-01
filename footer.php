@@ -29,7 +29,7 @@
                 <h4 class="widget-title">Contacto</h4>
                 <ul>
                     <li><i class="fas fa-map-marker-alt"></i> Lima, Perú</li>
-                    <li><i class="fas fa-envelope"></i> exportaciones@buyinlatam.com</li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:Info@buyinlatam.com" style="color: inherit; text-decoration: none;">Info@buyinlatam.com</a></li>
                     <li><i class="fab fa-whatsapp"></i> +51 997 309 032</li>
                 </ul>
             </div>
