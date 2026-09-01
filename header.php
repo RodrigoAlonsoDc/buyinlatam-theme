@@ -114,7 +114,7 @@
             <nav class="main-nav-nebula">
                 <ul>
                     <li class="<?php echo is_front_page() ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
-                    <li class="<?php echo is_shop() ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo</a></li>
+                    <li class="<?php echo ( is_shop() || is_post_type_archive('product') || is_product_category() || is_product_tag() ) ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( home_url( '/?post_type=product' ) ); ?>">Catálogo</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Nosotros</a></li>
                     <li class="<?php echo ( is_page(29) || is_page('contacto') ) ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>">Contacto</a></li>
                 </ul>

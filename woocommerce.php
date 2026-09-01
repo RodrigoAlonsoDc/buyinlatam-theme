@@ -6,7 +6,7 @@
 
 if ( is_singular( 'product' ) ) {
     include get_template_directory() . '/single-product.php';
-} elseif ( is_shop() || is_product_taxonomy() || is_product_category() || is_product_tag() ) {
+} elseif ( is_shop() || is_product_taxonomy() || is_product_category() || is_product_tag() || is_post_type_archive('product') ) {
     include get_template_directory() . '/archive-product.php';
 } else {
     get_header(); ?>
