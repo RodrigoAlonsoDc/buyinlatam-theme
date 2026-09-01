@@ -257,7 +257,7 @@ get_header(); ?>
                     <span class="promo-tag">NUEVA COSECHA & DISEÑO</span>
                     <h2>Colección 2026: Marca Propia OEM</h2>
                     <p>Preparamos tus productos con tus propias etiquetas, bordados y empaques de lujo.</p>
-                    <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" class="btn-promo btn-promo-light">
+                    <a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>" class="btn-promo btn-promo-light">
                         Solicitar Muestras
                     </a>
                 </div>

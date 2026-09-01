@@ -65,3 +65,12 @@ function procesar_formulario_contacto() {
     wp_safe_redirect( $redirect_url );
     exit;
 }
+
+// Helper para obtener URL de contacto (Página ID: 29)
+function buyinlatam_get_contact_url() {
+    $permalink = get_permalink( 29 );
+    if ( $permalink ) {
+        return $permalink;
+    }
+    return home_url( '/?page_id=29' );
+}

@@ -77,7 +77,7 @@
 
             <!-- Utilidades / Accesos Directos B2B -->
             <div class="header-user-actions">
-                <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" class="action-item" title="Solicitar Cotización">
+                <a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>" class="action-item" title="Solicitar Cotización">
                     <div class="action-icon-wrap">
                         <i class="far fa-heart"></i>
                     </div>
@@ -116,7 +116,7 @@
                     <li class="<?php echo is_front_page() ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
                     <li class="<?php echo is_shop() ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Nosotros</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">Contacto</a></li>
+                    <li class="<?php echo ( is_page(29) || is_page('contacto') ) ? 'current-menu-item' : ''; ?>"><a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>">Contacto</a></li>
                 </ul>
             </nav>
 

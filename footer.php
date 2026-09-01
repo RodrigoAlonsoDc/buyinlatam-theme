@@ -21,7 +21,7 @@
                     <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
                     <li><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo de Productos</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Sobre Nosotros</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">Contacto</a></li>
+                    <li><a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>">Contacto</a></li>
                 </ul>
             </div>
             
