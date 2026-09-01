@@ -7,7 +7,7 @@
                         BUY IN <span style="color:var(--accent-yellow);">LATAM</span>
                     </div>
                 </div>
-                <p>BuyInLatam es la boutique exclusiva B2B dedicada a llevar los productos peruanos más finos al mundo entero. Exportación directa, calidad certificada.</p>
+                <p>BuyInLatam is the premier B2B export boutique dedicated to delivering the finest Latin American products worldwide. Direct export, certified quality.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -16,19 +16,19 @@
             </div>
             
             <div class="footer-widget links-widget">
-                <h4 class="widget-title">Enlaces Rápidos</h4>
+                <h4 class="widget-title">Quick Links</h4>
                 <ul>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
-                    <li><a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">Catálogo de Productos</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">Sobre Nosotros</a></li>
-                    <li><a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>">Contacto</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/?post_type=product' ) ); ?>">Product Catalog</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/nosotros' ) ); ?>">About Us</a></li>
+                    <li><a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>">Contact</a></li>
                 </ul>
             </div>
             
             <div class="footer-widget contact-widget">
-                <h4 class="widget-title">Contacto</h4>
+                <h4 class="widget-title">Contact</h4>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Lima, Perú</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Lima, Peru</li>
                     <li><i class="fas fa-envelope"></i> <a href="mailto:Info@buyinlatam.com" style="color: inherit; text-decoration: none;">Info@buyinlatam.com</a></li>
                     <li><i class="fab fa-whatsapp"></i> +51 997 309 032</li>
                 </ul>
@@ -36,19 +36,19 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> BuyInLatam. Todos los derechos reservados. Desarrollado con ❤️</p>
+            <p>&copy; <?php echo date('Y'); ?> BuyInLatam. All rights reserved. Built with excellence for global trade.</p>
         </div>
     </footer>
     
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/51997309032?text=Hola,%20quisiera%20m%C3%A1s%20informaci%C3%B3n" class="floating-whatsapp" target="_blank" title="Contactar por WhatsApp">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20more%20information%20about%20export%20orders" class="floating-whatsapp" target="_blank" title="Contact via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Botón Flotante de Tuerca (Selector de Paletas) -->
-    <button id="btn-open-palette-modal" class="floating-palette-btn" title="Personalizar Paleta de Colores">
+    <!-- Palette Customizer Button -->
+    <button id="btn-open-palette-modal" class="floating-palette-btn" title="Customize Color Palette">
         <i class="fas fa-cog"></i>
-        <span class="palette-tooltip">Paletas de Color</span>
+        <span class="palette-tooltip">Color Palettes</span>
     </button>
 
     <!-- Modal / Drawer Selector de Paletas -->
