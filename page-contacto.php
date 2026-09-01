@@ -1,102 +1,98 @@
 <?php
 /**
- * Plantilla de Página: Contacto
- * Tema BuyInLatam B2B
+ * Template Name: Página de Contacto
  */
 
 get_header(); ?>
 
-<div class="site-wrapper">
+<main id="primary" class="site-main contact-page-wrapper">
     <!-- Hero Banner Contacto -->
-    <section class="page-hero">
-        <div class="container">
-            <h4 style="color:var(--accent-yellow); font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px;"><i class="fas fa-headset"></i> ATENCIÓN Y COTIZACIONES 24/7</h4>
-            <h1>Contáctanos</h1>
-            <p>Estamos listos para atender tus requerimientos de importación y cotizaciones al por mayor.</p>
+    <section class="contact-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/alpaca-model.png');">
+        <div class="contact-hero-overlay">
+            <div class="container">
+                <h1 class="contact-hero-title">Contáctanos</h1>
+            </div>
         </div>
     </section>
 
-    <main class="page-content-wrapper">
-        <div class="container">
+    <!-- Sección Principal 2 Columnas -->
+    <section class="contact-main-content">
+        <div class="container contact-container">
             
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-bottom:60px;">
-                
-                <!-- Canales de Contacto Directo -->
-                <div>
-                    <h2 style="font-family:var(--font-title); font-size:28px; margin-bottom:20px; color:var(--text-primary);">Canales Oficiales de Exportación</h2>
-                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:30px;">
-                        ¿Deseas incluir tu marca en prendas de alpaca o importar lotes de cacao, café y granos peruanos? Comunícate directamente con nuestro equipo comercial.
-                    </p>
+            <div class="contact-header-text">
+                <h2>Comencemos una conversación</h2>
+            </div>
 
-                    <div style="display:flex; flex-direction:column; gap:20px;">
-                        <div style="display:flex; align-items:center; gap:20px; padding:20px; background:white; border-radius:12px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
-                            <div style="width:50px; height:50px; background:var(--accent-green); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin:0 0 4px 0; font-family:var(--font-title); font-size:16px;">WhatsApp Comercial</h4>
-                                <a href="https://wa.me/51997309032" target="_blank" style="color:var(--primary-blue); font-weight:700; font-size:16px;">+51 997 309 032</a>
-                            </div>
-                        </div>
+            <div class="contact-row">
+                <!-- Columna Izquierda: Información -->
+                <div class="contact-col-info">
+                    <h3>Consulta cómo podemos ayudarte:</h3>
 
-                        <div style="display:flex; align-items:center; gap:20px; padding:20px; background:white; border-radius:12px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
-                            <div style="width:50px; height:50px; background:var(--primary-blue); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin:0 0 4px 0; font-family:var(--font-title); font-size:16px;">Correo de Exportaciones</h4>
-                                <a href="mailto:exportaciones@buyinlatam.com" style="color:var(--primary-blue); font-weight:700; font-size:16px;">exportaciones@buyinlatam.com</a>
-                            </div>
-                        </div>
+                    <div class="contact-info-block">
+                        <h4>Únete como proveedor B2B</h4>
+                        <p>Solicita colocar tu producto en nuestro catálogo de exportación para llegar a mercados internacionales. <a href="#">Exporta con Buy In Latam</a>.</p>
+                    </div>
 
-                        <div style="display:flex; align-items:center; gap:20px; padding:20px; background:white; border-radius:12px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
-                            <div style="width:50px; height:50px; background:var(--primary-blue-light); color:var(--primary-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin:0 0 4px 0; font-family:var(--font-title); font-size:16px;">Oficina Central</h4>
-                                <span style="color:var(--text-secondary); font-size:15px;">Lima, Perú — Envíos a todo el mundo</span>
-                            </div>
-                        </div>
+                    <div class="contact-info-block">
+                        <h4>Asesoría en exportaciones</h4>
+                        <p>Aprende de nuestros expertos sobre normativas, certificaciones de origen y logística internacional. <a href="#">Nuestros servicios corporativos</a>.</p>
+                    </div>
+
+                    <div class="contact-info-block">
+                        <h4>Soporte al cliente</h4>
+                        <p>¿Tienes dudas sobre un pedido en curso o sobre nuestros envíos internacionales? Nuestro equipo de soporte está listo para ayudarte.</p>
                     </div>
                 </div>
 
-                <!-- Formulario o Caja de Cotización -->
-                <div style="background:white; padding:40px; border-radius:16px; border:1px solid var(--border-color); box-shadow:var(--shadow-md);">
-                    <h3 style="font-family:var(--font-title); font-size:24px; margin:0 0 20px 0; color:var(--text-primary);">Enviar Solicitud de Cotización</h3>
+                <!-- Columna Derecha: Formulario de Contacto -->
+                <div class="contact-col-form">
+                    <p class="form-notice">Por favor nota: todos los campos son requeridos.</p>
                     
-                    <form action="https://wa.me/51997309032" method="get" target="_blank" style="display:flex; flex-direction:column; gap:16px;">
-                        <div>
-                            <label style="display:block; font-weight:600; margin-bottom:6px; font-size:14px;">Nombre / Empresa:</label>
-                            <input type="text" name="nombre" placeholder="Ej. Juan Pérez - Importaciones S.A." style="width:100%; padding:12px; border:1px solid var(--border-color); border-radius:8px; font-family:var(--font-primary); box-sizing:border-box;" required>
+                    <?php 
+                    // Si el envío fue exitoso, mostramos el mensaje
+                    if ( isset($_GET['envio']) && $_GET['envio'] == 'exito' ) : ?>
+                        <div class="alert alert-success">
+                            ¡Gracias! Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto pronto.
                         </div>
-
-                        <div>
-                            <label style="display:block; font-weight:600; margin-bottom:6px; font-size:14px;">Producto de Interés:</label>
-                            <select style="width:100%; padding:12px; border:1px solid var(--border-color); border-radius:8px; font-family:var(--font-primary); box-sizing:border-box;">
-                                <option value="Prendas de Alpaca (Con tu Marca)">Prendas de Alpaca (Con tu Marca)</option>
-                                <option value="Cacao Fino de Aroma">Cacao Fino de Aroma</option>
-                                <option value="Café de Origen Peruano">Café de Origen Peruano</option>
-                                <option value="Snacks & Granos Selectos">Snacks & Granos Selectos</option>
-                                <option value="Otros Productos de Exportación">Otros Productos de Exportación</option>
-                            </select>
+                    <?php elseif( isset($_GET['envio']) && $_GET['envio'] == 'error' ): ?>
+                        <div class="alert alert-danger">
+                            Hubo un error al enviar tu mensaje. Por favor intenta de nuevo.
                         </div>
+                    <?php endif; ?>
 
-                        <div>
-                            <label style="display:block; font-weight:600; margin-bottom:6px; font-size:14px;">País de Destino:</label>
-                            <input type="text" placeholder="Ej. España, Estados Unidos, México" style="width:100%; padding:12px; border:1px solid var(--border-color); border-radius:8px; font-family:var(--font-primary); box-sizing:border-box;">
+                    <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="POST" class="custom-contact-form">
+                        <!-- Seguridad y Acción -->
+                        <input type="hidden" name="action" value="procesar_formulario_contacto">
+                        <?php wp_nonce_field( 'enviar_contacto', 'contacto_nonce' ); ?>
+                        <input type="hidden" name="pagina_retorno" value="<?php echo esc_url(get_permalink()); ?>">
+
+                        <div class="form-group">
+                            <label for="contact_name">Nombre completo</label>
+                            <input type="text" id="contact_name" name="contact_name" required>
                         </div>
-
-                        <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:14px; font-size:16px; margin-top:10px;">
-                            <i class="fab fa-whatsapp" style="font-size:20px;"></i> Enviar Cotización por WhatsApp
-                        </button>
+                        
+                        <div class="form-group">
+                            <label for="contact_email">Correo electrónico</label>
+                            <input type="email" id="contact_email" name="contact_email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact_phone">Número de WhatsApp / Teléfono</label>
+                            <input type="tel" id="contact_phone" name="contact_phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact_message">Detalles del producto / Mensaje</label>
+                            <textarea id="contact_message" name="contact_message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="contact-submit-btn">ENVIAR MENSAJE</button>
                     </form>
                 </div>
-
             </div>
 
         </div>
-    </main>
-</div>
+    </section>
+</main>
 
 <?php get_footer(); ?>
