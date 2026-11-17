@@ -1,0 +1,9 @@
+---
+# Despliegue del tema buyinlatam-theme con cPanel Git Version Control.
+# El repo debe clonarse FUERA de wp-content (ej. /home/buildlat/repositories/buyinlatam-theme)
+# y este archivo copia los archivos del tema a la carpeta que usa WordPress.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/buildlat/public_html/wp-content/themes/buildlatam-theme/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/rsync -a --delete --exclude='.git' --exclude='.github' --exclude='.cpanel.yml' --exclude='deploy.php' --exclude='test-cicd.php' --exclude='.gitignore' ./ $DEPLOYPATH
