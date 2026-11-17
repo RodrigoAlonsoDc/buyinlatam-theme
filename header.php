@@ -77,6 +77,25 @@
 
             <!-- B2B User Actions -->
             <div class="header-user-actions">
+                <?php if ( function_exists( 'trp_custom_language_switcher' ) ) :
+                    global $TRP_LANGUAGE;
+                    $trp_langs = trp_custom_language_switcher();
+                    if ( count( $trp_langs ) > 1 ) : ?>
+                <div class="lang-switcher" role="group" aria-label="Language">
+                    <?php foreach ( $trp_langs as $code => $lang ) :
+                        $is_current = ( $code === $TRP_LANGUAGE ); ?>
+                        <a href="<?php echo esc_url( $lang['current_page_url'] ); ?>"
+                           class="lang-switcher-item<?php echo $is_current ? ' is-active' : ''; ?>"
+                           hreflang="<?php echo esc_attr( str_replace( '_', '-', $code ) ); ?>"
+                           title="<?php echo esc_attr( $lang['language_name'] ); ?>"
+                           data-no-translation
+                           <?php echo $is_current ? 'aria-current="true"' : ''; ?>>
+                            <?php echo esc_html( strtoupper( $lang['short_language_name'] ) ); ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; endif; ?>
+
                 <a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url( '/?page_id=29' ) ); ?>" class="action-item" title="Request Quote">
                     <div class="action-icon-wrap">
                         <i class="far fa-heart"></i>
