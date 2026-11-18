@@ -81,7 +81,7 @@
                     global $TRP_LANGUAGE;
                     $trp_langs = trp_custom_language_switcher();
                     if ( count( $trp_langs ) > 1 ) : ?>
-                <div class="lang-switcher" role="group" aria-label="Language">
+                <div class="lang-switcher" role="group" aria-label="Language" data-no-translation>
                     <?php foreach ( $trp_langs as $code => $lang ) :
                         $is_current = ( $code === $TRP_LANGUAGE ); ?>
                         <a href="<?php echo esc_url( $lang['current_page_url'] ); ?>"
