@@ -56,8 +56,8 @@
         <div class="palette-modal-card">
             <div class="palette-modal-header">
                 <div>
-                    <h3 class="palette-modal-title"><i class="fas fa-palette"></i> Selector de Paletas</h3>
-                    <p class="palette-modal-subtitle">Prueba combinaciones de color en tiempo real para BuyInLatam</p>
+                    <h3 class="palette-modal-title"><i class="fas fa-palette"></i> Palette Selector</h3>
+                    <p class="palette-modal-subtitle">Try color combinations in real time for BuyInLatam</p>
                 </div>
                 <button id="btn-close-palette-modal" class="palette-close-btn">&times;</button>
             </div>
@@ -73,8 +73,8 @@
                         <span style="background:#0F172A;"></span>
                     </div>
                     <div class="palette-info">
-                        <strong>1. Azul Real & Oro (Oficial)</strong>
-                        <span>Línea institucional limpia y vibrante</span>
+                        <strong>1. Royal Blue & Gold (Official)</strong>
+                        <span>Clean and vibrant corporate look</span>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
                     </div>
                     <div class="palette-info">
                         <strong>2. Dark Mode B2B</strong>
-                        <span>Estética oscura de alto impacto visual</span>
+                        <span>High-impact dark aesthetic</span>
                     </div>
                 </div>
 
@@ -103,8 +103,8 @@
                         <span style="background:#111827;"></span>
                     </div>
                     <div class="palette-info">
-                        <strong>3. Verde Andino & Oro</strong>
-                        <span>Ideal para agroexportación y café</span>
+                        <strong>3. Andean Green & Gold</strong>
+                        <span>Ideal for agro-exports and coffee</span>
                     </div>
                 </div>
 
@@ -118,8 +118,8 @@
                         <span style="background:#1C1917;"></span>
                     </div>
                     <div class="palette-info">
-                        <strong>4. Terracota & Cacao</strong>
-                        <span>Identidad cálida, artesanal y textil</span>
+                        <strong>4. Terracotta & Cacao</strong>
+                        <span>Warm, handcrafted and textile identity</span>
                     </div>
                 </div>
 
@@ -133,8 +133,8 @@
                         <span style="background:#0F172A;"></span>
                     </div>
                     <div class="palette-info">
-                        <strong>5. Azul Marino Prestige</strong>
-                        <span>Elegancia ejecutiva y sobria</span>
+                        <strong>5. Navy Blue Prestige</strong>
+                        <span>Sober executive elegance</span>
                     </div>
                 </div>
 
@@ -149,14 +149,14 @@
                     </div>
                     <div class="palette-info">
                         <strong>6. Black & Gold Luxury</strong>
-                        <span>Boutique de lujo para alpaca selecta</span>
+                        <span>Luxury boutique for select alpaca</span>
                     </div>
                 </div>
             </div>
 
             <div class="palette-modal-footer">
                 <button class="btn-reset-palette" onclick="resetThemePalette()">
-                    <i class="fas fa-undo"></i> Restablecer Colores por Defecto
+                    <i class="fas fa-undo"></i> Reset Default Colors
                 </button>
             </div>
         </div>
