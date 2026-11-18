@@ -103,7 +103,7 @@
                     <span class="action-label">Quote</span>
                 </a>
 
-                <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20information%20about%20export%20products" target="_blank" class="action-item whatsapp-action" title="WhatsApp Advisory">
+                <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20information%20about%20export%20products" target="_blank" class="action-item whatsapp-action" title="WhatsApp Advisory">
                     <div class="action-icon-wrap">
                         <i class="fab fa-whatsapp"></i>
                     </div>
@@ -183,7 +183,7 @@
                 <i class="fas fa-headset"></i>
                 <div class="support-text">
                     <span class="support-label">B2B Support:</span>
-                    <a href="tel:+51997309032" class="support-phone">+51 997 309 032</a>
+                    <a href="tel:+51969765560" class="support-phone">+51 969 765 560</a>
                 </div>
             </div>
 

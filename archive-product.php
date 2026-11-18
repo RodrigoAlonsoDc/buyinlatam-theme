@@ -117,7 +117,7 @@ get_header(); ?>
 
                                 <!-- B2B Conversion Actions -->
                                 <div class="b2b-card-actions">
-                                    <a href="https://wa.me/51997309032?text=<?php echo $wa_message; ?>" target="_blank" class="btn-b2b-quote" title="Quote via WhatsApp">
+                                    <a href="https://wa.me/51969765560?text=<?php echo $wa_message; ?>" target="_blank" class="btn-b2b-quote" title="Quote via WhatsApp">
                                         <i class="fab fa-whatsapp"></i> Request Wholesale Quote
                                     </a>
                                     <a href="<?php the_permalink(); ?>" class="btn-b2b-details" title="View technical specifications">
@@ -158,7 +158,7 @@ get_header(); ?>
                     <h2>Need these products manufactured under your own brand?</h2>
                     <p>We manage custom labeling, luxury embroidery, personalized packaging, origin certificates, and phytosanitary documentation tailored to your company.</p>
                     <div class="oem-banner-actions">
-                        <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20information%20about%20Private%20Label%20OEM%20manufacturing" target="_blank" class="btn-hero-cta">
+                        <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20information%20about%20Private%20Label%20OEM%20manufacturing" target="_blank" class="btn-hero-cta">
                             Speak with an OEM Specialist <i class="fas fa-arrow-right"></i>
                         </a>
                         <a href="<?php echo esc_url( function_exists('buyinlatam_get_contact_url') ? buyinlatam_get_contact_url() : home_url('/?page_id=29') ); ?>" class="btn-hero-secondary">

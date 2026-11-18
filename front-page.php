@@ -29,7 +29,7 @@ get_header(); ?>
                             Fine baby alpaca knitwear, single-origin cacao, specialty coffee, and superfoods in bulk. <strong>Custom Private Label (OEM) Available!</strong>
                         </p>
                         <div class="hero-btn-group">
-                            <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20to%20request%20a%20wholesale%20quote" target="_blank" class="btn-hero-cta">
+                            <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20to%20request%20a%20wholesale%20quote" target="_blank" class="btn-hero-cta">
                                 Request Wholesale Quote <i class="fas fa-arrow-right"></i>
                             </a>
                             <a href="<?php echo esc_url( home_url( '/?post_type=product' ) ); ?>" class="btn-hero-secondary">
@@ -149,7 +149,7 @@ get_header(); ?>
                                     </div>
                                 </div>
                                 <div class="card-action-bar">
-                                    <a href="https://wa.me/51997309032?text=<?php echo urlencode('Hello, I would like to quote: ' . get_the_title()); ?>" target="_blank" class="btn-quote-cart" title="Quote via WhatsApp">
+                                    <a href="https://wa.me/51969765560?text=<?php echo urlencode('Hello, I would like to quote: ' . get_the_title()); ?>" target="_blank" class="btn-quote-cart" title="Quote via WhatsApp">
                                         <i class="fab fa-whatsapp"></i> Quote
                                     </a>
                                     <a href="<?php the_permalink(); ?>" class="btn-details-minimal" title="Technical Specs">
@@ -173,7 +173,7 @@ get_header(); ?>
                                 <div class="stars-rate"><i class="fas fa-star"></i> 5.0</div>
                             </div>
                             <div class="card-action-bar">
-                                <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20to%20quote%20Baby%20Alpaca%20Sweaters" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
+                                <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20to%20quote%20Baby%20Alpaca%20Sweaters" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
                             </div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@ get_header(); ?>
                                 <div class="stars-rate"><i class="fas fa-star"></i> 4.9</div>
                             </div>
                             <div class="card-action-bar">
-                                <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20to%20quote%20Raw%20Cacao" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
+                                <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20to%20quote%20Raw%20Cacao" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@ get_header(); ?>
                                 <div class="stars-rate"><i class="fas fa-star"></i> 5.0</div>
                             </div>
                             <div class="card-action-bar">
-                                <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20to%20quote%20Specialty%20Coffee" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
+                                <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20to%20quote%20Specialty%20Coffee" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
                             </div>
                         </div>
                     </div>
@@ -224,7 +224,7 @@ get_header(); ?>
                                 <div class="stars-rate"><i class="fas fa-star"></i> 4.8</div>
                             </div>
                             <div class="card-action-bar">
-                                <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20to%20quote%20Royal%20Quinoa" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
+                                <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20to%20quote%20Royal%20Quinoa" target="_blank" class="btn-quote-cart"><i class="fab fa-whatsapp"></i> Quote</a>
                             </div>
                         </div>
                     </div>

@@ -162,7 +162,7 @@ get_header(); ?>
 
                             <!-- Botones de Acción B2B -->
                             <div class="product-cta-group">
-                                <a href="https://wa.me/51997309032?text=<?php echo urlencode('Hola BuyInLatam, deseo cotizar al por mayor el producto: ' . get_the_title() . ($sku ? ' (SKU: ' . $sku . ')' : '') . ' - Enlace: ' . get_permalink()); ?>" target="_blank" class="btn-whatsapp-quote">
+                                <a href="https://wa.me/51969765560?text=<?php echo urlencode('Hola BuyInLatam, deseo cotizar al por mayor el producto: ' . get_the_title() . ($sku ? ' (SKU: ' . $sku . ')' : '') . ' - Enlace: ' . get_permalink()); ?>" target="_blank" class="btn-whatsapp-quote">
                                     <i class="fab fa-whatsapp"></i>
                                     <div class="btn-text">
                                         <span class="main-label">Cotizar por WhatsApp</span>
@@ -363,7 +363,7 @@ get_header(); ?>
                                     <h3 class="product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                     <p class="product-price">Cotizar al por mayor</p>
                                     <div class="product-actions">
-                                        <a href="https://wa.me/51997309032?text=<?php echo urlencode('Hola, quiero cotizar ' . get_the_title()); ?>" target="_blank" class="btn-add-cart">
+                                        <a href="https://wa.me/51969765560?text=<?php echo urlencode('Hola, quiero cotizar ' . get_the_title()); ?>" target="_blank" class="btn-add-cart">
                                             <i class="fab fa-whatsapp"></i> Cotizar
                                         </a>
                                         <a href="<?php the_permalink(); ?>" class="btn-view">Detalles</a>

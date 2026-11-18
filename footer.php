@@ -30,7 +30,7 @@
                 <ul>
                     <li><i class="fas fa-map-marker-alt"></i> Lima, Peru</li>
                     <li><i class="fas fa-envelope"></i> <a href="mailto:Info@buyinlatam.com" style="color: inherit; text-decoration: none;">Info@buyinlatam.com</a></li>
-                    <li><i class="fab fa-whatsapp"></i> +51 997 309 032</li>
+                    <li><i class="fab fa-whatsapp"></i> +51 969 765 560</li>
                 </ul>
             </div>
         </div>
@@ -41,7 +41,7 @@
     </footer>
     
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/51997309032?text=Hello,%20I%20would%20like%20more%20information%20about%20export%20orders" class="floating-whatsapp" target="_blank" title="Contact via WhatsApp">
+    <a href="https://wa.me/51969765560?text=Hello,%20I%20would%20like%20more%20information%20about%20export%20orders" class="floating-whatsapp" target="_blank" title="Contact via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
