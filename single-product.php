@@ -1,13 +1,16 @@
 <?php
 /**
  * Plantilla de Detalle de Producto WooCommerce
- * Tema BuyInLatam B2B - Exportación Premium
+ * Tema BuyInLatam B2B - Ficha estilo catálogo B2B
+ *
+ * Los datos comerciales (precio FOB, pedido mínimo, puerto, etc.) salen de los
+ * atributos del producto: ver buyinlatam_product_specs() en functions.php.
  */
 
 get_header(); ?>
 
 <div class="site-wrapper single-product-page">
-    
+
     <!-- Migas de Pan (Breadcrumbs) -->
     <div class="b2b-breadcrumbs-bar">
         <div class="container">
@@ -32,312 +35,161 @@ get_header(); ?>
 
     <main class="single-product-main">
         <div class="container">
-            <?php while ( have_posts() ) : the_post(); global $product; 
-                $sku = $product ? $product->get_sku() : '';
-                $attachment_ids = $product ? $product->get_gallery_image_ids() : array();
+            <?php while ( have_posts() ) : the_post();
+                $product        = wc_get_product( get_the_ID() );
+                $product_name   = $product ? $product->get_name() : get_post_field( 'post_title', get_the_ID() ); // sin entidades HTML (para textos de WhatsApp/correo)
+                $sku            = $product ? $product->get_sku() : '';
+                $specs          = buyinlatam_product_specs( $product );
+                $image_ids      = array();
+                if ( has_post_thumbnail() ) {
+                    $image_ids[] = get_post_thumbnail_id();
+                }
+                if ( $product ) {
+                    $image_ids = array_unique( array_merge( $image_ids, $product->get_gallery_image_ids() ) );
+                }
+                $product_tags   = get_the_terms( get_the_ID(), 'product_tag' );
+                $quote_message  = 'Hello BuyInLatam, I would like a quote for: ' . $product_name . ( $sku ? ' (Ref: ' . $sku . ')' : '' ) . "\nEstimated volume: \nDestination port: ";
+                $whatsapp_url   = 'https://wa.me/51969765560?text=' . rawurlencode( 'Hello BuyInLatam, I would like a quote for: ' . $product_name . ( $sku ? ' (Ref: ' . $sku . ')' : '' ) . ' - ' . get_permalink() );
+                $sent_status    = isset( $_GET['envio'] ) ? sanitize_key( $_GET['envio'] ) : '';
+
+                // Marca: Productos → Marcas de WooCommerce; si no hay, atributo "Brand"/"Marca".
+                $brand_html = '';
+                $brands     = taxonomy_exists( 'product_brand' ) ? get_the_terms( get_the_ID(), 'product_brand' ) : false;
+                if ( $brands && ! is_wp_error( $brands ) ) {
+                    $brand_html = '<a href="' . esc_url( get_term_link( $brands[0] ) ) . '">' . esc_html( $brands[0]->name ) . '</a>';
+                } elseif ( ! empty( $specs['brand']['values'] ) ) {
+                    $brand_html = esc_html( $specs['brand']['values'][0] );
+                }
             ?>
-                
-                <div class="product-detail-layout">
-                    
-                    <!-- Columna Izquierda: Galería e Imágenes -->
-                    <div class="product-detail-gallery">
-                        <div class="gallery-wrapper">
-                            <div class="main-image-container">
-                                <span class="product-badge-float"><i class="fas fa-certificate"></i> Origin: Peru</span>
-                                <span class="product-badge-oem"><i class="fas fa-tag"></i> Private Label (OEM)</span>
-                                
-                                <?php if ( has_post_thumbnail() ) : ?>
-                                    <div class="main-image-box" id="main-product-image-box">
-                                        <?php the_post_thumbnail( 'large', array( 'class' => 'featured-product-img', 'id' => 'main-product-img' ) ); ?>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="main-image-box">
-                                        <img src="<?php echo wc_placeholder_img_src(); ?>" alt="<?php the_title_attribute(); ?>" id="main-product-img">
-                                    </div>
-                                <?php endif; ?>
+
+                <!-- Ficha principal: galería + datos comerciales -->
+                <section class="pd-top">
+
+                    <div class="pd-gallery<?php echo count( $image_ids ) > 1 ? '' : ' is-single'; ?>">
+                        <?php if ( count( $image_ids ) > 1 ) : ?>
+                            <div class="pd-thumbs">
+                                <?php foreach ( $image_ids as $i => $image_id ) : ?>
+                                    <button type="button" class="pd-thumb<?php echo 0 === $i ? ' active' : ''; ?>"
+                                        data-full="<?php echo esc_url( wp_get_attachment_image_url( $image_id, 'large' ) ); ?>"
+                                        aria-label="<?php echo esc_attr( sprintf( 'Image %d', $i + 1 ) ); ?>">
+                                        <?php echo wp_get_attachment_image( $image_id, 'thumbnail' ); ?>
+                                    </button>
+                                <?php endforeach; ?>
                             </div>
+                        <?php endif; ?>
 
-                            <!-- Miniaturas de Galería (si existen) -->
-                            <?php if ( ! empty( $attachment_ids ) || has_post_thumbnail() ) : ?>
-                                <div class="product-thumbnails-grid">
-                                    <?php if ( has_post_thumbnail() ) : 
-                                        $main_img_url = wp_get_attachment_image_url( get_post_thumbnail_id(), 'large' );
-                                    ?>
-                                        <div class="thumbnail-item active" onclick="switchProductImage('<?php echo esc_url($main_img_url); ?>', this)">
-                                            <?php the_post_thumbnail( 'thumbnail' ); ?>
-                                        </div>
-                                    <?php endif; ?>
-
-                                    <?php foreach ( $attachment_ids as $attachment_id ) : 
-                                        $full_img_url = wp_get_attachment_image_url( $attachment_id, 'large' );
-                                    ?>
-                                        <div class="thumbnail-item" onclick="switchProductImage('<?php echo esc_url($full_img_url); ?>', this)">
-                                            <?php echo wp_get_attachment_image( $attachment_id, 'thumbnail' ); ?>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
+                        <div class="pd-main-image">
+                            <?php if ( $image_ids ) : ?>
+                                <?php echo wp_get_attachment_image( $image_ids[0], 'large', false, array( 'id' => 'pd-main-img', 'alt' => esc_attr( $product_name ) ) ); ?>
+                            <?php else : ?>
+                                <img id="pd-main-img" src="<?php echo esc_url( wc_placeholder_img_src( 'large' ) ); ?>" alt="<?php the_title_attribute(); ?>">
                             <?php endif; ?>
-
-                            <!-- Banner de Envíos Internacionales -->
-                            <div class="export-shipping-card">
-                                <div class="shipping-item">
-                                    <i class="fas fa-plane-departure"></i>
-                                    <div>
-                                        <strong>Express Air Freight</strong>
-                                        <span>3 to 6 business days</span>
-                                    </div>
-                                </div>
-                                <div class="shipping-divider"></div>
-                                <div class="shipping-item">
-                                    <i class="fas fa-ship"></i>
-                                    <div>
-                                        <strong>Ocean Freight FCL/LCL</strong>
-                                        <span>FOB Callao / CIF Destination</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- Columna Derecha: Información y Cotizador B2B -->
-                    <div class="product-detail-summary">
-                        <div class="b2b-category-sku">
-                            <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
-                                <span class="category-tag"><i class="fas fa-folder"></i> <?php echo esc_html( $terms[0]->name ); ?></span>
-                            <?php endif; ?>
-                            <?php if ( $sku ) : ?>
-                                <span class="sku-tag">SKU: <?php echo esc_html( $sku ); ?></span>
-                            <?php endif; ?>
-                        </div>
+                    <div class="pd-summary">
+                        <?php if ( $brand_html ) : ?>
+                            <p class="pd-brand"><?php echo $brand_html; // escapado arriba ?></p>
+                        <?php endif; ?>
+                        <h1 class="pd-title"><?php the_title(); ?></h1>
+                        <hr class="pd-divider">
 
-                        <h1 class="product-detail-title"><?php the_title(); ?></h1>
-                        
-                        <div class="b2b-status-bar">
-                            <span class="stock-status in-stock"><i class="fas fa-check-circle"></i> Available for Export</span>
-                            <span class="verified-origin"><i class="fas fa-shield-alt"></i> 100% Quality Control</span>
-                        </div>
+                        <?php if ( 'exito' === $sent_status ) : ?>
+                            <div class="pd-alert pd-alert-success"><i class="fas fa-check-circle"></i> Thank you! Your quote request was sent. An export advisor will contact you shortly.</div>
+                        <?php elseif ( 'error' === $sent_status ) : ?>
+                            <div class="pd-alert pd-alert-error"><i class="fas fa-exclamation-circle"></i> We could not send your request. Please try again or contact us via WhatsApp.</div>
+                        <?php endif; ?>
 
-                        <!-- Resumen y Descripción Corta -->
-                        <div class="product-short-desc">
-                            <?php 
-                            if ( has_excerpt() ) {
-                                the_excerpt();
-                            } else {
-                                echo '<p>' . wp_trim_words( get_the_content(), 35 ) . '</p>';
+                        <dl class="pd-specs">
+                            <?php
+                            foreach ( array( 'unit_price', 'fob_price', 'moq', 'payment', 'port', 'reference' ) as $key ) {
+                                buyinlatam_render_spec( $specs[ $key ] );
                             }
                             ?>
-                        </div>
+                        </dl>
 
-                        <!-- Caja de Cotización B2B por Volumen -->
-                        <div class="b2b-quote-box">
-                            <div class="quote-header">
-                                <div class="quote-badge">
-                                    <i class="fas fa-cubes"></i> Wholesale Only
-                                </div>
-                                <div class="moq-info">
-                                    <strong>Minimum Order (MOQ):</strong> <span>50 units / Inquire</span>
-                                </div>
-                            </div>
+                        <button type="button" class="pd-quote-btn" data-open-quote>
+                            <i class="fas fa-envelope"></i> Send Quote Request
+                        </button>
+                        <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener" class="pd-whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> Or quote via WhatsApp
+                        </a>
 
-                            <!-- Escala de Volumen -->
-                            <div class="volume-pricing-table">
-                                <div class="volume-tier">
-                                    <span class="tier-qty">50 - 199 units</span>
-                                    <span class="tier-price">Base FOB Price</span>
-                                </div>
-                                <div class="volume-tier popular">
-                                    <span class="tier-tag">Most Requested</span>
-                                    <span class="tier-qty">200 - 499 units</span>
-                                    <span class="tier-price">15% Discount</span>
-                                </div>
-                                <div class="volume-tier">
-                                    <span class="tier-qty">500+ units</span>
-                                    <span class="tier-price">Container Rate</span>
-                                </div>
+                        <?php if ( has_excerpt() ) : ?>
+                            <div class="pd-short-desc">
+                                <?php the_excerpt(); ?>
                             </div>
-
-                            <p class="incoterms-note">
-                                <i class="fas fa-info-circle"></i> We quote under Incoterms <strong>FOB (Callao - Peru), CIF or DDP</strong> depending on the destination country.
-                            </p>
-
-                            <!-- Botones de Acción B2B -->
-                            <div class="product-cta-group">
-                                <a href="https://wa.me/51969765560?text=<?php echo urlencode('Hello BuyInLatam, I would like a wholesale quote for: ' . ( $product ? $product->get_name() : get_post_field( 'post_title', get_the_ID() ) ) . ($sku ? ' (SKU: ' . $sku . ')' : '') . ' - Link: ' . get_permalink()); ?>" target="_blank" class="btn-whatsapp-quote">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <div class="btn-text">
-                                        <span class="main-label">Quote via WhatsApp</span>
-                                        <span class="sub-label">Instant reply from an export advisor</span>
-                                    </div>
-                                </a>
-
-                                <a href="#b2b-inquiry-section" class="btn-rfq-email">
-                                    <i class="fas fa-envelope-open-text"></i> Request a Formal Quote by Email
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Mini Highlights B2B -->
-                        <div class="b2b-feature-highlights">
-                            <div class="highlight-box">
-                                <i class="fas fa-tags highlight-icon"></i>
-                                <div>
-                                    <strong>Private Label (OEM)</strong>
-                                    <span>We include your labels and packaging</span>
-                                </div>
-                            </div>
-                            <div class="highlight-box">
-                                <i class="fas fa-file-contract highlight-icon"></i>
-                                <div>
-                                    <strong>Complete Documentation</strong>
-                                    <span>Certificates of origin and phytosanitary certificates</span>
-                                </div>
-                            </div>
-                            <div class="highlight-box">
-                                <i class="fas fa-box highlight-icon"></i>
-                                <div>
-                                    <strong>Samples Available</strong>
-                                    <span>Direct shipping to your country</span>
-                                </div>
-                            </div>
-                            <div class="highlight-box">
-                                <i class="fas fa-handshake highlight-icon"></i>
-                                <div>
-                                    <strong>End-to-End Advisory</strong>
-                                    <span>Support with customs and logistics</span>
-                                </div>
-                            </div>
-                        </div>
-
+                        <?php endif; ?>
                     </div>
 
-                </div>
+                </section>
 
-                <!-- Pestañas / Ficha Técnica Completa B2B -->
-                <div class="b2b-tabs-container">
-                    <div class="b2b-tabs-nav">
-                        <button class="tab-btn active" onclick="openB2BTab(event, 'tab-specs')">
-                            <i class="fas fa-clipboard-list"></i> Technical Sheet & Specifications
-                        </button>
-                        <button class="tab-btn" onclick="openB2BTab(event, 'tab-oem')">
-                            <i class="fas fa-palette"></i> Customization & Private Label (OEM)
-                        </button>
-                        <button class="tab-btn" onclick="openB2BTab(event, 'tab-shipping')">
-                            <i class="fas fa-shipping-fast"></i> Logistics & Shipping Terms
-                        </button>
-                        <button class="tab-btn" onclick="openB2BTab(event, 'tab-description')">
-                            <i class="fas fa-align-left"></i> Full Description
-                        </button>
+                <hr class="pd-section-divider">
+
+                <!-- Descripción + datos de producción y logística -->
+                <section class="pd-details">
+                    <div class="pd-description">
+                        <h2>Description</h2>
+                        <div class="pd-description-body">
+                            <?php the_content(); ?>
+                        </div>
+
+                        <?php if ( $product_tags && ! is_wp_error( $product_tags ) ) : ?>
+                            <ul class="pd-tags">
+                                <?php foreach ( $product_tags as $tag ) : ?>
+                                    <li><a href="<?php echo esc_url( get_term_link( $tag ) ); ?>"><?php echo esc_html( $tag->name ); ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
                     </div>
 
-                    <div class="b2b-tabs-content">
-                        <!-- Tab 1: Ficha Técnica -->
-                        <div id="tab-specs" class="tab-pane active">
-                            <h3><i class="fas fa-box-open"></i> Export Product Specifications</h3>
-                            <table class="spec-table-modern">
-                                <tr>
-                                    <th>Country of Origin</th>
-                                    <td>Peru (Selected Production Regions)</td>
-                                </tr>
-                                <tr>
-                                    <th>Availability</th>
-                                    <td>Continuous production with shipments by batch / container</td>
-                                </tr>
-                                <tr>
-                                    <th>OEM Customization</th>
-                                    <td><strong style="color:var(--primary-blue);">Yes! Labels, embroidery, engraving and packaging with your own brand</strong></td>
-                                </tr>
-                                <tr>
-                                    <th>Quality Standards</th>
-                                    <td>100% export quality certified before shipment</td>
-                                </tr>
-                                <tr>
-                                    <th>Supported Incoterms</th>
-                                    <td>FOB (Port of Callao / Jorge Chávez Airport), CIF, DDP</td>
-                                </tr>
-                                <tr>
-                                    <th>Accepted Payment Methods</th>
-                                    <td>International Wire Transfer (T/T), Letter of Credit (L/C)</td>
-                                </tr>
-                            </table>
-                        </div>
+                    <dl class="pd-specs pd-specs-secondary">
+                        <?php
+                        foreach ( array( 'capacity', 'lead_time', 'incoterms', 'packaging' ) as $key ) {
+                            buyinlatam_render_spec( $specs[ $key ] );
+                        }
+                        ?>
+                    </dl>
+                </section>
 
-                        <!-- Tab 2: OEM y Marca Propia -->
-                        <div id="tab-oem" class="tab-pane">
-                            <h3><i class="fas fa-crown"></i> Manufacturing with Your Brand and Exclusive Design</h3>
-                            <p>At <strong>BuyInLatam</strong> we not only export the finest products from Peru, we also fully adapt them so they arrive ready to sell under your business identity.</p>
-                            
-                            <div class="oem-steps-grid">
-                                <div class="oem-step-card">
-                                    <div class="step-num">01</div>
-                                    <h4>Send Your Logo and Artwork</h4>
-                                    <p>Share your brand specifications, colors and preferred packaging with us.</p>
-                                </div>
-                                <div class="oem-step-card">
-                                    <div class="step-num">02</div>
-                                    <h4>Sample & Prototype</h4>
-                                    <p>We produce a physical or digital sample for your approval.</p>
-                                </div>
-                                <div class="oem-step-card">
-                                    <div class="step-num">03</div>
-                                    <h4>Mass Production</h4>
-                                    <p>We manufacture and process your batch under strict quality control.</p>
-                                </div>
-                                <div class="oem-step-card">
-                                    <div class="step-num">04</div>
-                                    <h4>Packaging & Dispatch</h4>
-                                    <p>Packed with barcodes and shipped to your country.</p>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Modal: solicitud de cotización (usa el mismo envío que la página de contacto) -->
+                <div class="pd-modal" id="pd-quote-modal" hidden>
+                    <div class="pd-modal-backdrop" data-close-quote></div>
+                    <div class="pd-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="pd-quote-title">
+                        <button type="button" class="pd-modal-close" data-close-quote aria-label="Close"><i class="fas fa-times"></i></button>
+                        <h2 id="pd-quote-title">Send Quote Request</h2>
+                        <p class="pd-modal-product"><?php echo esc_html( $product_name ); ?></p>
 
-                        <!-- Tab 3: Logística y Envíos -->
-                        <div id="tab-shipping" class="tab-pane">
-                            <h3><i class="fas fa-globe"></i> International Shipping & Logistics</h3>
-                            <p>We manage the entire supply chain from our warehouses in Lima to the port, airport or warehouse of your choice anywhere in the world.</p>
-                            
-                            <div class="shipping-modes-grid">
-                                <div class="mode-card">
-                                    <i class="fas fa-plane"></i>
-                                    <h4>Air Freight</h4>
-                                    <ul>
-                                        <li>Ideal for fast-moving orders or urgent samples.</li>
-                                        <li>Estimated time: <strong>3 to 6 business days</strong>.</li>
-                                        <li>Departure: Jorge Chávez International Airport (LIM).</li>
-                                    </ul>
-                                </div>
-                                <div class="mode-card">
-                                    <i class="fas fa-ship"></i>
-                                    <h4>Ocean Freight</h4>
-                                    <ul>
-                                        <li>Full Container Load (FCL) or Less than Container Load (LCL).</li>
-                                        <li>Estimated time: <strong>12 to 25 days</strong> depending on destination.</li>
-                                        <li>Departure: Port of Callao (Peru).</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST" class="pd-quote-form">
+                            <input type="hidden" name="action" value="procesar_formulario_contacto">
+                            <?php wp_nonce_field( 'enviar_contacto', 'contacto_nonce' ); ?>
+                            <input type="hidden" name="pagina_retorno" value="<?php echo esc_url( get_permalink() ); ?>">
 
-                        <!-- Tab 4: Descripción Completa -->
-                        <div id="tab-description" class="tab-pane">
-                            <h3><i class="fas fa-info-circle"></i> Details & Description</h3>
-                            <div class="full-content-typography">
-                                <?php the_content(); ?>
-                            </div>
-                        </div>
+                            <label for="pd_contact_name">Full Name / Company Name</label>
+                            <input type="text" id="pd_contact_name" name="contact_name" placeholder="John Doe / Global Imports LLC" required>
+
+                            <label for="pd_contact_email">Corporate Email Address</label>
+                            <input type="email" id="pd_contact_email" name="contact_email" placeholder="buyer@company.com" required>
+
+                            <label for="pd_contact_phone">WhatsApp / Phone (with country code)</label>
+                            <input type="tel" id="pd_contact_phone" name="contact_phone" placeholder="+1 555 123 4567" required>
+
+                            <label for="pd_contact_message">Message</label>
+                            <textarea id="pd_contact_message" name="contact_message" rows="4" required><?php echo esc_textarea( $quote_message ); ?></textarea>
+
+                            <button type="submit" class="pd-quote-submit">Send Request</button>
+                        </form>
                     </div>
                 </div>
-
-
 
                 <!-- Productos Relacionados B2B -->
                 <?php
-                $related_args = array(
+                $related_query = new WP_Query( array(
                     'post_type'      => 'product',
                     'posts_per_page' => 4,
                     'post__not_in'   => array( get_the_ID() ),
-                    'orderby'        => 'rand'
-                );
-                $related_query = new WP_Query( $related_args );
+                    'orderby'        => 'rand',
+                ) );
                 if ( $related_query->have_posts() ) :
                 ?>
                 <div class="b2b-related-products">
@@ -355,7 +207,7 @@ get_header(); ?>
                                         <?php if ( has_post_thumbnail() ) {
                                             the_post_thumbnail( 'woocommerce_thumbnail', array( 'class' => 'product-image' ) );
                                         } else { ?>
-                                            <img src="<?php echo wc_placeholder_img_src(); ?>" alt="<?php the_title_attribute(); ?>" class="product-image">
+                                            <img src="<?php echo esc_url( wc_placeholder_img_src() ); ?>" alt="<?php the_title_attribute(); ?>" class="product-image">
                                         <?php } ?>
                                     </a>
                                 </div>
@@ -363,7 +215,7 @@ get_header(); ?>
                                     <h3 class="product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                     <p class="product-price">Wholesale quote</p>
                                     <div class="product-actions">
-                                        <a href="https://wa.me/51969765560?text=<?php echo urlencode('Hello, I would like a quote for ' . get_post_field( 'post_title', get_the_ID() )); ?>" target="_blank" class="btn-add-cart">
+                                        <a href="https://wa.me/51969765560?text=<?php echo rawurlencode( 'Hello, I would like a quote for ' . get_post_field( 'post_title', get_the_ID() ) ); ?>" target="_blank" rel="noopener" class="btn-add-cart">
                                             <i class="fab fa-whatsapp"></i> Quote
                                         </a>
                                         <a href="<?php the_permalink(); ?>" class="btn-view">Details</a>
@@ -382,34 +234,38 @@ get_header(); ?>
 </div>
 
 <script>
-function switchProductImage(imgUrl, el) {
-    var mainImg = document.getElementById('main-product-img');
-    if (mainImg) {
-        mainImg.src = imgUrl;
+(function () {
+    // Galería: cambiar imagen principal al pulsar una miniatura
+    var mainImg = document.getElementById('pd-main-img');
+    document.querySelectorAll('.pd-thumb').forEach(function (thumb) {
+        thumb.addEventListener('click', function () {
+            if (mainImg) {
+                mainImg.removeAttribute('srcset');
+                mainImg.removeAttribute('sizes');
+                mainImg.src = thumb.getAttribute('data-full');
+            }
+            document.querySelectorAll('.pd-thumb').forEach(function (t) { t.classList.remove('active'); });
+            thumb.classList.add('active');
+        });
+    });
+
+    // Modal de cotización
+    var modal = document.getElementById('pd-quote-modal');
+    if (!modal) return;
+    function openModal() {
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        var first = modal.querySelector('input:not([type=hidden])');
+        if (first) first.focus();
     }
-    var thumbs = document.querySelectorAll('.thumbnail-item');
-    thumbs.forEach(function(item) {
-        item.classList.remove('active');
-    });
-    if (el) {
-        el.classList.add('active');
+    function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
     }
-}
-
-function openB2BTab(evt, tabId) {
-    var tabPanes = document.querySelectorAll('.tab-pane');
-    tabPanes.forEach(function(pane) {
-        pane.classList.remove('active');
-    });
-
-    var tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(function(btn) {
-        btn.classList.remove('active');
-    });
-
-    document.getElementById(tabId).classList.add('active');
-    evt.currentTarget.classList.add('active');
-}
+    document.querySelectorAll('[data-open-quote]').forEach(function (b) { b.addEventListener('click', openModal); });
+    modal.querySelectorAll('[data-close-quote]').forEach(function (b) { b.addEventListener('click', closeModal); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+})();
 </script>
 
 <?php get_footer(); ?>

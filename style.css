@@ -3176,3 +3176,439 @@ a:hover {
         font-size: 12px;
     }
 }
+
+/* ==========================================================================
+   FICHA DE PRODUCTO (estilo catálogo B2B: galería + tabla de datos comerciales)
+   ========================================================================== */
+.single-product-page {
+    --pd-ink: #4B657C;          /* títulos, botón y bordes de acento */
+    --pd-text: #556573;         /* valores */
+    --pd-muted: #A3AEB8;        /* datos "Not informed" */
+    --pd-line: #E6EAEE;
+    background: var(--bg-surface);
+}
+
+.single-product-page .single-product-main {
+    padding: 36px 0 80px;
+}
+
+/* --- Bloque superior --- */
+.pd-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+}
+
+.pd-gallery {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.pd-gallery.is-single {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.pd-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pd-thumb {
+    display: block;
+    width: 72px;
+    height: 96px;
+    padding: 4px;
+    background: #fff;
+    border: 1px solid var(--pd-line);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.pd-thumb:hover,
+.pd-thumb.active {
+    border-color: var(--pd-ink);
+}
+
+.pd-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pd-main-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    padding: 36px;
+    background: #fff;
+    border: 1px solid var(--pd-ink);
+    border-radius: 8px;
+}
+
+.pd-main-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.pd-summary {
+    padding-top: 6px;
+}
+
+.pd-title {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--pd-ink);
+}
+
+.pd-divider {
+    margin: 22px 30px 28px;
+    border: 0;
+    border-top: 1px solid var(--pd-line);
+}
+
+.pd-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 24px;
+    margin: 0;
+}
+
+.pd-spec dt {
+    margin: 0 0 2px;
+    font-family: var(--font-title);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: var(--pd-text);
+}
+
+.pd-spec dd {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--pd-text);
+}
+
+.pd-spec.is-empty dt,
+.pd-spec.is-empty dd {
+    color: var(--pd-muted);
+}
+
+.pd-quote-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 48px;
+    padding: 11px 30px;
+    background: transparent;
+    border: 1px solid var(--pd-ink);
+    border-radius: 8px;
+    font-family: var(--font-title);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--pd-ink);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pd-quote-btn:hover,
+.pd-quote-btn:focus-visible {
+    background: var(--pd-ink);
+    color: #fff;
+}
+
+.pd-whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pd-text);
+}
+
+.pd-whatsapp-link i {
+    color: var(--accent-green);
+    font-size: 16px;
+}
+
+.pd-whatsapp-link:hover {
+    color: var(--pd-ink);
+}
+
+.pd-alert {
+    margin: 0 0 24px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.pd-alert-success { background: #ECFDF3; color: #166534; }
+.pd-alert-error   { background: #FEF2F2; color: #991B1B; }
+
+/* --- Descripción --- */
+.pd-section-divider {
+    margin: 64px 0 40px;
+    border: 0;
+    border-top: 1px solid var(--pd-line);
+}
+
+.pd-details {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+    margin-bottom: 72px;
+}
+
+.pd-description h2 {
+    margin: 0 0 16px;
+    font-family: var(--font-title);
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.pd-description-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--pd-text);
+}
+
+.pd-description-body p {
+    margin: 0 0 12px;
+}
+
+.pd-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pd-tags a {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--pd-ink);
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pd-ink);
+}
+
+.pd-tags a:hover {
+    background: var(--pd-ink);
+    color: #fff;
+}
+
+.pd-specs-secondary {
+    padding-top: 34px;
+}
+
+/* --- Modal de cotización --- */
+.pd-modal[hidden] {
+    display: none;
+}
+
+.pd-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pd-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.pd-modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.pd-modal-dialog h2 {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--pd-ink);
+}
+
+.pd-modal-product {
+    margin: 4px 0 20px;
+    font-size: 14px;
+    color: var(--pd-text);
+}
+
+.pd-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    font-size: 18px;
+    color: var(--pd-text);
+    cursor: pointer;
+}
+
+.pd-modal-close:hover {
+    background: var(--bg-main);
+}
+
+.pd-quote-form label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pd-text);
+}
+
+.pd-quote-form input,
+.pd-quote-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid var(--pd-line);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+.pd-quote-form input:focus,
+.pd-quote-form textarea:focus {
+    outline: none;
+    border-color: var(--pd-ink);
+    box-shadow: 0 0 0 3px rgba(75, 101, 124, 0.15);
+}
+
+.pd-quote-submit {
+    width: 100%;
+    margin-top: 22px;
+    padding: 12px;
+    background: var(--pd-ink);
+    border: 0;
+    border-radius: 8px;
+    font-family: var(--font-title);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pd-quote-submit:hover {
+    filter: brightness(1.1);
+}
+
+@media (max-width: 992px) {
+    .pd-top,
+    .pd-details {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 36px;
+    }
+    .pd-specs-secondary {
+        padding-top: 0;
+    }
+    .pd-section-divider {
+        margin: 40px 0 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pd-gallery {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .pd-thumbs {
+        order: 2;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .pd-thumb {
+        flex: 0 0 64px;
+        width: 64px;
+        height: 80px;
+    }
+    .pd-main-image {
+        padding: 16px;
+    }
+    .pd-title {
+        font-size: 22px;
+    }
+    .pd-divider {
+        margin: 18px 0 22px;
+    }
+    .pd-quote-btn {
+        margin-top: 32px;
+    }
+}
+
+/* Marca (encima del título) y descripción corta (bajo los botones) */
+.pd-brand {
+    margin: 0 0 6px;
+    font-family: var(--font-title);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-blue);
+}
+
+.pd-brand a {
+    color: inherit;
+}
+
+.pd-brand a:hover {
+    color: var(--pd-ink);
+}
+
+.pd-short-desc {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--pd-line);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--pd-text);
+}
+
+.pd-short-desc p {
+    margin: 0 0 8px;
+}
+
+.pd-short-desc p:last-child {
+    margin-bottom: 0;
+}

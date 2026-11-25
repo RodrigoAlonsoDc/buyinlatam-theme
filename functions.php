@@ -66,6 +66,102 @@ function procesar_formulario_contacto() {
     exit;
 }
 
+/**
+ * Datos comerciales de la ficha de producto.
+ *
+ * Se cargan en WooCommerce → Producto → Atributos, como atributos personalizados
+ * (uno por dato; varios valores separados por "|"). El nombre del atributo puede
+ * estar en inglés o en español: se compara sin mayúsculas ni tildes.
+ *
+ * Devuelve [ clave => [ 'label' => ..., 'values' => [...] ] ]; 'values' vacío
+ * significa "No informado".
+ */
+function buyinlatam_product_specs( $product ) {
+    $fields = array(
+        'unit_price' => array( 'Unit Price', array( 'unit price', 'precio de unidad', 'precio unitario' ) ),
+        'fob_price'  => array( 'FOB Price', array( 'fob price', 'precio fob' ) ),
+        'moq'        => array( 'Minimum Order Quantity', array( 'minimum order quantity', 'minimum order', 'moq', 'cantidad minima de orden', 'pedido minimo' ) ),
+        'payment'    => array( 'Payment Terms', array( 'payment terms', 'payment type', 'tipo de pago', 'forma de pago' ) ),
+        'port'       => array( 'Port of Preference', array( 'port of preference', 'port', 'puerto de preferencia', 'puerto' ) ),
+        'reference'  => array( 'Reference', array( 'reference', 'referencia' ) ),
+        'capacity'   => array( 'Production Capacity', array( 'production capacity', 'capacidad de produccion' ) ),
+        'lead_time'  => array( 'Lead Time', array( 'lead time', 'delivery time', 'plazo de entrega' ) ),
+        'incoterms'  => array( 'Incoterms', array( 'incoterms', 'incoterm' ) ),
+        'packaging'  => array( 'Packaging', array( 'packaging', 'packaging description', 'descripcion de empaque', 'empaque' ) ),
+        'brand'      => array( 'Brand', array( 'brand', 'marca' ) ), // respaldo si no se usa Productos → Marcas
+    );
+
+    // Valores por defecto de BuyInLatam cuando el producto no trae el dato.
+    $defaults = array(
+        'payment'   => array( 'L/C (Letter of Credit)', 'T/T (Bank Transfer)' ),
+        'port'      => array( 'Chancay, Peru' ),
+        'incoterms' => array( 'FOB - Free on Board', 'CIF - Cost, Insurance and Freight', 'DDP - Delivered Duty Paid' ),
+    );
+
+    $normalize = function ( $text ) {
+        return trim( strtolower( remove_accents( wp_strip_all_tags( $text ) ) ), " \t\n:" );
+    };
+
+    // Atributos del producto indexados por nombre normalizado.
+    $attrs = array();
+    if ( $product ) {
+        foreach ( $product->get_attributes() as $attribute ) {
+            if ( ! is_object( $attribute ) ) {
+                continue;
+            }
+            if ( $attribute->is_taxonomy() ) {
+                $values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'names' ) );
+            } else {
+                $values = $attribute->get_options();
+            }
+            $values = array_values( array_filter( array_map( 'trim', (array) $values ), 'strlen' ) );
+            $attrs[ $normalize( wc_attribute_label( $attribute->get_name(), $product ) ) ] = $values;
+        }
+    }
+
+    $specs = array();
+    foreach ( $fields as $key => $field ) {
+        $values = array();
+        foreach ( $field[1] as $alias ) {
+            if ( ! empty( $attrs[ $alias ] ) ) {
+                $values = $attrs[ $alias ];
+                break;
+            }
+        }
+
+        if ( ! $values && 'unit_price' === $key && $product && '' !== $product->get_price() ) {
+            $values = array( get_woocommerce_currency() . ' ' . number_format( (float) $product->get_price(), wc_get_price_decimals(), wc_get_price_decimal_separator(), wc_get_price_thousand_separator() ) );
+        }
+        if ( ! $values && 'reference' === $key && $product && $product->get_sku() ) {
+            $values = array( $product->get_sku() );
+        }
+        if ( ! $values && isset( $defaults[ $key ] ) ) {
+            $values = $defaults[ $key ];
+        }
+
+        $specs[ $key ] = array(
+            'label'  => $field[0],
+            'values' => $values,
+        );
+    }
+
+    return $specs;
+}
+
+/** Imprime una celda "ETIQUETA: valor" de la ficha de producto. */
+function buyinlatam_render_spec( $spec ) {
+    $empty = empty( $spec['values'] );
+    echo '<div class="pd-spec' . ( $empty ? ' is-empty' : '' ) . '">';
+    echo '<dt>' . esc_html( $spec['label'] ) . ':</dt>';
+    echo '<dd>';
+    if ( $empty ) {
+        echo 'Not informed';
+    } else {
+        echo implode( '<br>', array_map( 'esc_html', $spec['values'] ) );
+    }
+    echo '</dd></div>';
+}
+
 // Helper para obtener URL de contacto (Página ID: 29)
 function buyinlatam_get_contact_url() {
     $permalink = get_permalink( 29 );
