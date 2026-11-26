@@ -3392,8 +3392,18 @@ a:hover {
     color: var(--pd-text);
 }
 
+.pd-description-body {
+    overflow-wrap: anywhere;   /* que ningún texto largo se salga de la card */
+}
+
 .pd-description-body p {
     margin: 0 0 12px;
+}
+
+.pd-description-sep {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid var(--pd-line);
 }
 
 .pd-tags {
