@@ -129,8 +129,12 @@ function buyinlatam_product_specs( $product ) {
             }
         }
 
-        if ( ! $values && 'unit_price' === $key && $product && '' !== $product->get_price() ) {
-            $values = array( get_woocommerce_currency() . ' ' . number_format( (float) $product->get_price(), wc_get_price_decimals(), wc_get_price_decimal_separator(), wc_get_price_thousand_separator() ) );
+        // Precios siempre en dólares (exportación), aunque la tienda esté en soles.
+        if ( ! $values && 'unit_price' === $key && $product && '' !== $product->get_price() && (float) $product->get_price() > 0 ) {
+            $values = array( $product->get_price() );
+        }
+        if ( in_array( $key, array( 'unit_price', 'fob_price' ), true ) ) {
+            $values = array_map( 'buyinlatam_format_usd', $values );
         }
         if ( ! $values && 'reference' === $key && $product && $product->get_sku() ) {
             $values = array( $product->get_sku() );
@@ -146,6 +150,19 @@ function buyinlatam_product_specs( $product ) {
     }
 
     return $specs;
+}
+
+/**
+ * Formatea un precio en dólares: "4500" / "4,500" / "$4500.5" → "USD 4,500.00".
+ * Un texto que no es solo un número (ej. "USD 4,500 / ton", "A consultar") se deja tal cual.
+ */
+function buyinlatam_format_usd( $value ) {
+    $clean = trim( preg_replace( '/^(USD|US\$|\$)\s*/i', '', trim( (string) $value ) ) );
+    $clean = str_replace( ',', '', $clean );
+    if ( ! is_numeric( $clean ) ) {
+        return $value;
+    }
+    return 'USD ' . number_format( (float) $clean, 2, '.', ',' );
 }
 
 /** Imprime una celda "ETIQUETA: valor" de la ficha de producto. */
