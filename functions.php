@@ -165,10 +165,16 @@ function buyinlatam_format_usd( $value ) {
     return 'USD ' . number_format( (float) $clean, 2, '.', ',' );
 }
 
-/** Imprime una celda "ETIQUETA: valor" de la ficha de producto. */
-function buyinlatam_render_spec( $spec ) {
+/**
+ * Imprime una celda "ETIQUETA: valor" de la ficha de producto.
+ * Con $icon (clase de Font Awesome, ej. "fa-clock") se imprime como card con ícono.
+ */
+function buyinlatam_render_spec( $spec, $icon = '' ) {
     $empty = empty( $spec['values'] );
-    echo '<div class="pd-spec' . ( $empty ? ' is-empty' : '' ) . '">';
+    echo '<div class="pd-spec' . ( $icon ? ' pd-spec-card' : '' ) . ( $empty ? ' is-empty' : '' ) . '">';
+    if ( $icon ) {
+        echo '<span class="pd-spec-icon" aria-hidden="true"><i class="fas ' . esc_attr( $icon ) . '"></i></span>';
+    }
     echo '<dt>' . esc_html( $spec['label'] ) . ':</dt>';
     echo '<dd>';
     if ( $empty ) {

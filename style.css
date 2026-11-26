@@ -3420,8 +3420,57 @@ a:hover {
     color: #fff;
 }
 
+/* Descripción y datos de producción como cards */
+.pd-description {
+    padding: 28px 32px;
+    background: #fff;
+    border: 1px solid var(--pd-line);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
 .pd-specs-secondary {
-    padding-top: 34px;
+    gap: 16px;
+}
+
+.pd-spec-card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 14px;
+    align-content: start;
+    padding: 18px 20px;
+    background: #fff;
+    border: 1px solid var(--pd-line);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.pd-spec-icon {
+    grid-row: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(75, 101, 124, 0.1);
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--pd-ink);
+}
+
+.pd-spec-card dt {
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: var(--pd-ink);
+}
+
+.pd-spec-card dd {
+    font-size: 15px;
+}
+
+.pd-spec-card.is-empty .pd-spec-icon {
+    background: var(--bg-main);
+    color: var(--pd-muted);
 }
 
 /* --- Modal de cotización --- */
@@ -3541,9 +3590,6 @@ a:hover {
         grid-template-columns: minmax(0, 1fr);
         gap: 36px;
     }
-    .pd-specs-secondary {
-        padding-top: 0;
-    }
     .pd-section-divider {
         margin: 40px 0 32px;
     }
@@ -3574,6 +3620,12 @@ a:hover {
     }
     .pd-quote-btn {
         margin-top: 32px;
+    }
+    .pd-description {
+        padding: 22px 20px;
+    }
+    .pd-specs-secondary {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
