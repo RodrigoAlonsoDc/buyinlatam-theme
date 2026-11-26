@@ -145,8 +145,14 @@ get_header(); ?>
 
                     <dl class="pd-specs pd-specs-secondary">
                         <?php
-                        foreach ( array( 'capacity', 'lead_time', 'incoterms', 'packaging' ) as $key ) {
-                            buyinlatam_render_spec( $specs[ $key ] );
+                        $secondary_icons = array(
+                            'capacity'  => 'fa-industry',
+                            'lead_time' => 'fa-clock',
+                            'incoterms' => 'fa-ship',
+                            'packaging' => 'fa-box',
+                        );
+                        foreach ( $secondary_icons as $key => $icon ) {
+                            buyinlatam_render_spec( $specs[ $key ], $icon );
                         }
                         ?>
                     </dl>
