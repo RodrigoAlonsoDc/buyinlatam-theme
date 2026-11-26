@@ -185,6 +185,30 @@ function buyinlatam_render_spec( $spec, $icon = '' ) {
     echo '</dd></div>';
 }
 
+/**
+ * En la descripción del producto, un párrafo hecho solo de guiones o guiones bajos
+ * ("————", "____") se usa como separador entre idiomas. Como no tiene espacios no se
+ * puede partir y se sale de la card: se reemplaza por una línea <hr>.
+ */
+function buyinlatam_product_separator_lines( $content ) {
+    if ( ! is_singular( 'product' ) ) {
+        return $content;
+    }
+    return preg_replace_callback(
+        '#<p[^>]*>(.*?)</p>#su',
+        function ( $match ) {
+            $text = html_entity_decode( wp_strip_all_tags( $match[1] ), ENT_QUOTES, 'UTF-8' );
+            $text = preg_replace( '/[\s\x{00A0}]+/u', '', $text );
+            if ( preg_match( '/^[\x{2014}\x{2013}\x{2015}\x{2500}_\-=]{5,}$/u', $text ) ) {
+                return '<hr class="pd-description-sep">';
+            }
+            return $match[0];
+        },
+        $content
+    );
+}
+add_filter( 'the_content', 'buyinlatam_product_separator_lines', 20 );
+
 // Helper para obtener URL de contacto (Página ID: 29)
 function buyinlatam_get_contact_url() {
     $permalink = get_permalink( 29 );
